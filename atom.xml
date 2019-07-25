@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/smwsk/"/>
-  <updated>2019-07-25T02:35:55.282Z</updated>
+  <updated>2019-07-25T07:23:48.795Z</updated>
   <id>https://github.com/smwsk/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://github.com/smwsk/2019/07/25/hello-world/"/>
     <id>https://github.com/smwsk/2019/07/25/hello-world/</id>
     <published>2019-07-25T02:35:55.281Z</published>
-    <updated>2019-07-25T02:35:55.282Z</updated>
+    <updated>2019-07-25T07:23:48.795Z</updated>
     
     <summary type="html">
     
@@ -35,6 +35,10 @@
     
     </summary>
     
+      <category term="JAVA" scheme="https://github.com/smwsk/categories/JAVA/"/>
+    
+    
+      <category term="搭建" scheme="https://github.com/smwsk/tags/%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
