@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/smwsk/"/>
-  <updated>2019-07-25T07:23:48.795Z</updated>
+  <updated>2019-07-28T08:44:24.944Z</updated>
   <id>https://github.com/smwsk/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MarkDown常用的语法</title>
+    <link href="https://github.com/smwsk/2019/07/26/study-markdown/"/>
+    <id>https://github.com/smwsk/2019/07/26/study-markdown/</id>
+    <published>2019-07-26T15:55:22.363Z</published>
+    <updated>2019-07-28T08:44:24.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;用#号来进行创建标题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;# 一级标题
+##
+        
+      
+    
+    </summary>
+    
+      <category term="其他" scheme="https://github.com/smwsk/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="入门" scheme="https://github.com/smwsk/tags/%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="MarkDown" scheme="https://github.com/smwsk/tags/MarkDown/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
