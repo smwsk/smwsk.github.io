@@ -4,29 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="MarkDown常用的语法, 关键字">
-    <meta name="description" content="标题
-用#号来进行创建标题
-
-# 一级标题
-## ##二级标题
-### ###三级标题 列表
-使用 * - + 三种字符来进行展示列表
-
-例子：
-    * 列表1
-    - 列表2
-    + 列表3
-效果
-
-
-列表1
-
-
-列表2
-
-
-">
+    <meta name="keywords" content="Hacker101-sql注入入门, 关键字">
+    <meta name="description" content="Hacker101中的第三题Micro-CMS v2主要考验的sql注入的问题  
+sql注入
+本题创建网页和编辑网页的时候都会提示限权问题，跳转到登录界面，所以我们只能从登录的入口进行入手我们使用burpSuite工具和sqlmap工具进">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MarkDown常用的语法 | Smwsk&#39;s Blog</title>
+    <title>Hacker101-sql注入入门 | Smwsk&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -281,13 +262,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        MarkDown常用的语法
+                        Hacker101-sql注入入门
                     </div>
                 </div>
             </div>
@@ -398,12 +379,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/入门/" target="_blank">
-                                <span class="chip bg-color">入门</span>
+                            <a href="/tags/CTF/" target="_blank">
+                                <span class="chip bg-color">CTF</span>
                             </a>
                         
-                            <a href="/tags/MarkDown/" target="_blank">
-                                <span class="chip bg-color">MarkDown</span>
+                            <a href="/tags/sql注入/" target="_blank">
+                                <span class="chip bg-color">sql注入</span>
                             </a>
                         
                     </div>
@@ -414,8 +395,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/其他/" class="post-category" target="_blank">
-                                其他
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                CTF
                             </a>
                         
                     </div>
@@ -426,14 +407,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-26
+                    2019-07-28
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        340
+                        256
                     </div>
                     
 
@@ -456,119 +437,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><blockquote>
-<p>用#号来进行创建标题</p>
+                <p>Hacker101中的第三题Micro-CMS v2主要考验的sql注入的问题  </p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><blockquote>
+<p>本题创建网页和编辑网页的时候都会提示限权问题，跳转到登录界面，所以我们只能从登录的入口进行入手<br>我们使用burpSuite工具和sqlmap工具进行测试</p>
 </blockquote>
-<pre><code># 一级标题
-## ##二级标题
-### ###三级标题 </code></pre><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><blockquote>
-<p>使用 * - + 三种字符来进行展示列表</p>
+<h3 id="使用burpSuite工具"><a href="#使用burpSuite工具" class="headerlink" title="使用burpSuite工具"></a>使用burpSuite工具</h3><blockquote>
+<p>在做好监听本地请求的情况下，发送登录请求<br><img src="/medias/ctf/3/request-content.png" alt="拦截登录请求图片"><br>把请求的信息保存到sql.txt文本中</p>
 </blockquote>
-<pre><code>例子：
-    * 列表1
-    - 列表2
-    + 列表3</code></pre><blockquote>
-<p>效果</p>
+<h3 id="使用sqlmap工具"><a href="#使用sqlmap工具" class="headerlink" title="使用sqlmap工具"></a>使用sqlmap工具</h3><p>使用以下命令进行漏洞扫描</p>
+<pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs</code></pre><p><img src="/medias/ctf/3/sql-content.png" alt="sql.txt内容"><br><img src="/medias/ctf/3/injection-content.png" alt="扫描出来的结果"><br>使用命令把数据库下载到本地</p>
+<pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs --dump</code></pre><p><img src="/medias/ctf/3/injection-content-dump.png" alt="下载数据库到本地"></p>
+<p>这样数据库的内容取到了，我们也同时拿到了两个flag</p>
+<h2 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h2><blockquote>
+<p>使用burpSuite进行拦截编辑网页请求,把请求添加到repeater上，尝试修改用其他方法进行请求数据</p>
 </blockquote>
-<ul>
-<li>列表1</li>
-</ul>
-<ul>
-<li>列表2</li>
-</ul>
-<ul>
-<li>列表3</li>
-</ul>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><pre><code>使用``` 内容 ```的形式来表达</code></pre><h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>在Markdown中，可以使用 * 和  _  来表示斜体和加粗。</p>
-<pre><code>例子:
-    **Coding，让开发更简单**
-    __Coding，让开发更简单__</code></pre><p>效果:  </p>
-<blockquote>
-<p><strong>Coding，让开发更简单</strong><br><strong>Coding，让开发更简单</strong></p>
-</blockquote>
-<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><blockquote>
-<p>使用&gt;符号进行缩进</p>
-<pre><code>例子:
-使用&gt;进行缩进</code></pre></blockquote>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><h3 id="普通表格"><a href="#普通表格" class="headerlink" title="普通表格"></a>普通表格</h3><pre><code>姓名|技能|排行
---|:--:|--:
-刘备|哭|大哥
-关羽|打|二哥
-张飞|骂|三弟</code></pre><p>效果:  </p>
-<table>
-<thead>
-<tr>
-<th>姓名</th>
-<th align="center">技能</th>
-<th align="right">排行</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>刘备</td>
-<td align="center">哭</td>
-<td align="right">大哥</td>
-</tr>
-<tr>
-<td>关羽</td>
-<td align="center">打</td>
-<td align="right">二哥</td>
-</tr>
-<tr>
-<td>张飞</td>
-<td align="center">骂</td>
-<td align="right">三弟</td>
-</tr>
-</tbody></table>
-<h3 id="表格居中"><a href="#表格居中" class="headerlink" title="表格居中"></a>表格居中</h3><pre><code>姓名 | 技能 | 排行
-:----------- | :-----------: | -----------:
-刘备|哭|大哥
-关羽|打|二哥
-张飞|骂|三弟</code></pre><p>效果:</p>
-<table>
-<thead>
-<tr>
-<th align="center">姓名</th>
-<th align="center">技能</th>
-<th align="center">排行</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">刘备</td>
-<td align="center">哭</td>
-<td align="center">大哥</td>
-</tr>
-<tr>
-<td align="center">关羽</td>
-<td align="center">打</td>
-<td align="center">二哥</td>
-</tr>
-<tr>
-<td align="center">张飞</td>
-<td align="center">骂</td>
-<td align="center">三弟</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>说明:<br><code>:--表示居左</code><br><code>:--: 表示居中</code><br><code>--: 表示居右</code></p>
-</blockquote>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><blockquote>
-<p>使用![Alt text][id]的方式来进行设置图片信息  </p>
-</blockquote>
-<pre><code>例子:
-    ![Alt text](/path/to/img.jpg)
-    或
-    ![Alt text](/path/to/img.jpg &quot;Optional title&quot;)</code></pre><p><img src="https://cbu01.alicdn.com/img/ibank/2018/334/469/9053964433_533245986.220x220xz.jpg" alt="图片1"></p>
-<p><img src="https://cbu01.alicdn.com/img/ibank/2019/363/937/10893739363_1518424921.220x220xz.jpg,%22%E6%A0%87%E9%A2%98%22" alt="图片2"></p>
-<blockquote>
-<p>修改图片大小</p>
-</blockquote>
-<pre><code>    ![test image size](url){:class=&quot;img-responsive&quot;}
-    ![test image size](url){:height=&quot;50%&quot; width=&quot;50%&quot;}
-    ![test image size](url){:height=&quot;100px&quot; width=&quot;400px&quot;}</code></pre><blockquote>
-<p>效果:</p>
-</blockquote>
-<p><img src="https://cbu01.alicdn.com/img/ibank/2018/334/469/9053964433_533245986.220x220xz.jpg" alt="图片1"> {: width=”100px” height=”100px”}  </p>
-<p><img src="https://cbu01.alicdn.com/img/ibank/2018/334/469/9053964433_533245986.220x220xz.jpg" alt="图片1 w=500px"></p>
+<p><img src="/medias/ctf/3/request-edit-content.png" alt="拦截编辑请求">  </p>
+<p><img src="/medias/ctf/3/request-edit-repeater-content.png" alt="修改请求的方法"><br>点击go进行重新请求，然后另外一个flag也就出来了。</p>
 
             </div>
             <hr/>
@@ -727,9 +611,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《MarkDown常用的语法》
+                    《Hacker101-sql注入入门》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/26/study-markdown/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/28/ctf/sqlmap-one/" property="cc:attributionName"
                rel="cc:attributionURL">
                 smwsk
             </a> 采用
@@ -769,9 +653,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/07/28/ctf/sqlmap-one/">
                     <div class="card-image">
@@ -791,9 +676,9 @@ sql注入
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -806,6 +691,7 @@ sql注入
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -828,31 +714,52 @@ sql注入
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/25/hello-world/">
+                <a href="/2019/07/26/study-markdown/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MarkDown常用的语法">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">MarkDown常用的语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            标题
+用#号来进行创建标题
+
+# 一级标题
+## ##二级标题
+### ###三级标题 列表
+使用 * - + 三种字符来进行展示列表
+
+例子：
+    * 列表1
+    - 列表2
+    + 列表3
+效果
+
+
+列表1
+
+
+列表2
+
+
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                            <a href="/categories/其他/" class="post-category" target="_blank">
+                                    其他
                                 </a>
                             
                             
@@ -862,8 +769,12 @@ sql注入
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/搭建/" target="_blank">
-                        <span class="chip bg-color">搭建</span>
+                    <a href="/tags/入门/" target="_blank">
+                        <span class="chip bg-color">入门</span>
+                    </a>
+                    
+                    <a href="/tags/MarkDown/" target="_blank">
+                        <span class="chip bg-color">MarkDown</span>
                     </a>
                     
                 </div>

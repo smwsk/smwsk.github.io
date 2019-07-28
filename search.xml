@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Hacker101-sql注入入门</title>
+      <link href="/2019/07/28/ctf/sqlmap-one/"/>
+      <url>/2019/07/28/ctf/sqlmap-one/</url>
+      
+        <content type="html"><![CDATA[<p>Hacker101中的第三题Micro-CMS v2主要考验的sql注入的问题  </p><h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><blockquote><p>本题创建网页和编辑网页的时候都会提示限权问题，跳转到登录界面，所以我们只能从登录的入口进行入手<br>我们使用burpSuite工具和sqlmap工具进行测试</p></blockquote><h3 id="使用burpSuite工具"><a href="#使用burpSuite工具" class="headerlink" title="使用burpSuite工具"></a>使用burpSuite工具</h3><blockquote><p>在做好监听本地请求的情况下，发送登录请求<br><img src="/medias/ctf/3/request-content.png" alt="拦截登录请求图片"><br>把请求的信息保存到sql.txt文本中</p></blockquote><h3 id="使用sqlmap工具"><a href="#使用sqlmap工具" class="headerlink" title="使用sqlmap工具"></a>使用sqlmap工具</h3><p>使用以下命令进行漏洞扫描</p><pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs</code></pre><p><img src="/medias/ctf/3/sql-content.png" alt="sql.txt内容"><br><img src="/medias/ctf/3/injection-content.png" alt="扫描出来的结果"><br>使用命令把数据库下载到本地</p><pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs --dump</code></pre><p><img src="/medias/ctf/3/injection-content-dump.png" alt="下载数据库到本地"></p><p>这样数据库的内容取到了，我们也同时拿到了两个flag</p><h2 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h2><blockquote><p>使用burpSuite进行拦截编辑网页请求,把请求添加到repeater上，尝试修改用其他方法进行请求数据</p></blockquote><p><img src="/medias/ctf/3/request-edit-content.png" alt="拦截编辑请求">  </p><p><img src="/medias/ctf/3/request-edit-repeater-content.png" alt="修改请求的方法"><br>点击go进行重新请求，然后另外一个flag也就出来了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MarkDown常用的语法</title>
       <link href="/2019/07/26/study-markdown/"/>
       <url>/2019/07/26/study-markdown/</url>
