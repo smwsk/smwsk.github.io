@@ -438,17 +438,17 @@ sql注入
 <p>本题创建网页和编辑网页的时候都会提示限权问题，跳转到登录界面，所以我们只能从登录的入口进行入手<br>我们使用burpSuite工具和sqlmap工具进行测试</p>
 </blockquote>
 <h3 id="使用burpSuite工具"><a href="#使用burpSuite工具" class="headerlink" title="使用burpSuite工具"></a>使用burpSuite工具</h3><blockquote>
-<p>在做好监听本地请求的情况下，发送登录请求<br><img src="/medias/ctf/3/request-content.png" alt="拦截登录请求图片"><br>把请求的信息保存到sql.txt文本中</p>
+<p>在做好监听本地请求的情况下，发送登录请求<br><img src="/medias/loading.svg" data-original="/medias/ctf/3/request-content.png" alt="拦截登录请求图片"><br>把请求的信息保存到sql.txt文本中</p>
 </blockquote>
 <h3 id="使用sqlmap工具"><a href="#使用sqlmap工具" class="headerlink" title="使用sqlmap工具"></a>使用sqlmap工具</h3><p>使用以下命令进行漏洞扫描</p>
-<pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs</code></pre><p><img src="/medias/ctf/3/sql-content.png" alt="sql.txt内容"><br><img src="/medias/ctf/3/injection-content.png" alt="扫描出来的结果"><br>使用命令把数据库下载到本地</p>
-<pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs --dump</code></pre><p><img src="/medias/ctf/3/injection-content-dump.png" alt="下载数据库到本地"></p>
+<pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs</code></pre><p><img src="/medias/loading.svg" data-original="/medias/ctf/3/sql-content.png" alt="sql.txt内容"><br><img src="/medias/loading.svg" data-original="/medias/ctf/3/injection-content.png" alt="扫描出来的结果"><br>使用命令把数据库下载到本地</p>
+<pre><code>    python sqlmap.py -r D:/Study/CTF/SqlMap/workspace/sql.txt --dbs --dump</code></pre><p><img src="/medias/loading.svg" data-original="/medias/ctf/3/injection-content-dump.png" alt="下载数据库到本地"></p>
 <p>这样数据库的内容取到了，我们也同时拿到了两个flag</p>
 <h2 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h2><blockquote>
 <p>使用burpSuite进行拦截编辑网页请求,把请求添加到repeater上，尝试修改用其他方法进行请求数据</p>
 </blockquote>
-<p><img src="/medias/ctf/3/request-edit-content.png" alt="拦截编辑请求">  </p>
-<p><img src="/medias/ctf/3/request-edit-repeater-content.png" alt="修改请求的方法"><br>点击go进行重新请求，然后另外一个flag也就出来了。</p>
+<p><img src="/medias/loading.svg" data-original="/medias/ctf/3/request-edit-content.png" alt="拦截编辑请求">  </p>
+<p><img src="/medias/loading.svg" data-original="/medias/ctf/3/request-edit-repeater-content.png" alt="修改请求的方法"><br>点击go进行重新请求，然后另外一个flag也就出来了。</p>
 
             </div>
             <hr/>
@@ -561,10 +561,10 @@ sql注入
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/loading.svg" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/loading.svg" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -657,7 +657,7 @@ sql注入
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CTF第二题-Xss漏洞">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="CTF第二题-Xss漏洞">
                         
                         <span class="card-title">CTF第二题-Xss漏洞</span>
                     </div>
@@ -715,7 +715,7 @@ sql注入
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MarkDown常用的语法">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="MarkDown常用的语法">
                         
                         <span class="card-title">MarkDown常用的语法</span>
                     </div>
@@ -1011,5 +1011,5 @@ $(function () {
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
-</body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>
