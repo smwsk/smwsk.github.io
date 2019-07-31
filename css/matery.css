@@ -343,6 +343,7 @@ header .go-back i {
 
 /* 背景图效果. */
 .bg-cover {
+	background: radial-gradient(ellipse at bottom,#1b2735 0%,#090a0f 100%);
     position: relative;
     display: flex;
     align-items: center;
