@@ -4,6 +4,112 @@
   
     
     <entry>
+      <title>Docker安装JAVA</title>
+      <link href="/2019/08/06/docker/docker-java/"/>
+      <url>/2019/08/06/docker/docker-java/</url>
+      
+        <content type="html"><![CDATA[<h2 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h2><blockquote><p>命令:</p><pre><code>docker search java</code></pre><p>执行结果:</p><pre><code>Last login: Tue Aug  6 15:50:02 2019 from 110.87.82.244[root@vultr ~]# docker search javaNAME                                     DESCRIPTION                                     STARS               OFFICIAL            AUTOMATEDnode                                     Node.js is a JavaScript-based platform for s…   7696                [OK]                tomcat                                   Apache Tomcat is an open source implementati…   2483                [OK]                java                                     Java is a concurrent, class-based, and objec…   1976                [OK]                openjdk                                  OpenJDK is an open-source implementation of …   1822                [OK]                ghost                                    Ghost is a free and open source blogging pla…   1011                [OK]                jetty                                    Jetty provides a Web server and javax.servle…   310                 [OK]                groovy                                   Apache Groovy is a multi-faceted language fo…   74                  [OK]                lwieske/java-8                           Oracle Java 8 Container - Full + Slim - Base…   43                                      [OK]nimmis/java-centos                       This is docker images of CentOS 7 with diffe…   42                                      [OK]fabric8/java-jboss-openjdk8-jdk          Fabric8 Java Base Image (JBoss, OpenJDK 8)      28                                      [OK]frekele/java                             docker run --rm --name java frekele/java        12                                      [OK]blacklabelops/java                       Java Base Images.                               8                                       [OK]bitnami/java                             Bitnami Java Docker Image                       4                                       [OK]cloudbees/java-with-docker-client        Java image with Docker client installed, use…   4                                       [OK]rightctrl/java                           Oracle Java                                     3                                       [OK]zoran/java10-sjre                        Slim Docker image based on AlpineLinux with …   2                                       [OK]dwolla/java                              Dwolla’s custom Java image                      1                                       [OK]cfje/java-buildpack                      Java Buildpack CI Image                         1                                       cfje/java-resource                       Java Concourse Resource                         1                                       cfje/java-test-applications              Java Test Applications CI Image                 1                                       buildo/java8-wkhtmltopdf                 Java 8 + wkhtmltopdf                            1                                       [OK]cfje/java-buildpack-memory-calculator    Java Buildpack Memory Calculator CI Image       0                                       cfje/java-buildpack-dependency-builder   Java Buildpack Dependencies Builder Image       0                                       thingswise/java-docker                   Java + dcd                                      0                                       [OK]jelastic/javaengine                      An image of the Java Engine server maintaine…   0                                       </code></pre></blockquote><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><blockquote><p>我们选择第四个oracle提供的java,使用命令进行下载</p><pre><code>docker pull java</code></pre><p>执行结果：</p><pre><code>[root@vultr ~]# docker pull javaUsing default tag: latestlatest: Pulling from library/java5040bd298390: Pull complete fce5728aad85: Pull complete 76610ec20bf5: Pull complete 60170fec2151: Pull complete e98f73de8f0d: Pull complete 11f7af24ed9c: Pull complete 49e2d6393f32: Pull complete bb9cdec9c7f3: Pull complete Digest: sha256:c1ff613e8ba25833d2e1940da0940c3824f03f802c449f3d1815a66b7f8c0e9dStatus: Downloaded newer image for java:latestdocker.io/library/java:latest</code></pre></blockquote><h2 id="查看安装的镜像"><a href="#查看安装的镜像" class="headerlink" title="查看安装的镜像"></a>查看安装的镜像</h2><pre><code>docker images</code></pre><p>执行结果：</p><pre><code>[root@vultr ~]# docker imagesREPOSITORY          TAG                 IMAGE ID            CREATED             SIZEmysql               latest              2151acc12881        2 weeks ago         445MBjava                latest              d23bdf5b1b1b        2 years ago         643MB</code></pre><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><blockquote><p>创建一个运行状态的容器</p></blockquote><pre><code>docker run -it --name myjava java bash</code></pre><pre><code>参数:       -it: 运行的时候启动一个交互界面    --name： 给容器命名一个名字    bash: 用bash的形式运行这个容器</code></pre><p>运行结果:</p><pre><code>[root@vultr ~]# docker run -it --name myjava java bashroot@c1084f446259:/#</code></pre><blockquote><p>我们采用java -version 来验证java容器是否安装成</p><pre><code>root@c1084f446259:/# java -versionopenjdk version &quot;1.8.0_111&quot;OpenJDK Runtime Environment (build 1.8.0_111-8u111-b14-2~bpo8+1-b14)OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)root@c1084f446259:/# </code></pre><p>到这里我们的java容器就创建成功了!!!</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> Mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker安装mysql</title>
+      <link href="/2019/08/06/docker/docker-mysql/"/>
+      <url>/2019/08/06/docker/docker-mysql/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><blockquote><p>docker pull mysql</p></blockquote><p>## </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> Mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux下Docker部署Java应用</title>
+      <link href="/2019/08/05/docker/docker-deploy/"/>
+      <url>/2019/08/05/docker/docker-deploy/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-安装Docker"><a href="#1-安装Docker" class="headerlink" title="1.安装Docker"></a>1.安装Docker</h2><pre><code>     curl -sSL https://get.docker.com/ | sh </code></pre><h2 id="2-启动Docker"><a href="#2-启动Docker" class="headerlink" title="2.启动Docker"></a>2.启动Docker</h2><pre><code>    service docker start </code></pre><blockquote><p>查看docker版本信息 </p><pre><code>    docker version</code></pre></blockquote><h2 id="3-docker-安装java环境"><a href="#3-docker-安装java环境" class="headerlink" title="3.docker 安装java环境"></a>3.docker 安装java环境</h2><h2 id="4-docker-安装maven环境"><a href="#4-docker-安装maven环境" class="headerlink" title="4.docker 安装maven环境"></a>4.docker 安装maven环境</h2><h2 id="5-docker-安装mysql环境"><a href="#5-docker-安装mysql环境" class="headerlink" title="5.docker 安装mysql环境"></a>5.docker 安装mysql环境</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> JAVA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sqlmap 常用命令</title>
+      <link href="/2019/08/02/ctf/sqlmap/sqlmap-zero/"/>
+      <url>/2019/08/02/ctf/sqlmap/sqlmap-zero/</url>
+      
+        <content type="html"><![CDATA[<h2 id="输出等级-V"><a href="#输出等级-V" class="headerlink" title="输出等级 V"></a>输出等级 V</h2><blockquote><p>V这个命令分为7个等级，不同的等级在控制台输出的内容不一样</p><pre><code>    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；    1：同时显示普通信息 [INFO] 和警告信息 [WARNING]；    2：同时显示调试信息 [DEBUG]；    3：同时显示注入使用的攻击荷载；    4：同时显示 HTTP 请求；    5：同时显示 HTTP 响应头；    6：同时显示 HTTP 响应体。</code></pre><p>初学者建议指定等级为3,这样会显示payload,便于学习</p></blockquote><h2 id="指定目标-U"><a href="#指定目标-U" class="headerlink" title="指定目标 U"></a>指定目标 U</h2><h2 id="列库-dbs"><a href="#列库-dbs" class="headerlink" title="列库 dbs"></a>列库 dbs</h2><h2 id="列表-tables"><a href="#列表-tables" class="headerlink" title="列表 tables"></a>列表 tables</h2><h2 id="列表中的字段-columns"><a href="#列表中的字段-columns" class="headerlink" title="列表中的字段 columns"></a>列表中的字段 columns</h2><h2 id="线程数-–threads"><a href="#线程数-–threads" class="headerlink" title="线程数 –threads"></a>线程数 –threads</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sqlmap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CTF第二题-Xss漏洞</title>
       <link href="/2019/07/29/ctf/xss/xss-one/"/>
       <url>/2019/07/29/ctf/xss/xss-one/</url>
