@@ -31,7 +31,7 @@
     
     
     <entry>
-      <title>Docker安装mysql</title>
+      <title>Docker安装Mysql</title>
       <link href="/2019/08/06/docker/docker-mysql/"/>
       <url>/2019/08/06/docker/docker-mysql/</url>
       
@@ -58,11 +58,11 @@
     
     
     <entry>
-      <title>Linux下Docker部署Java应用</title>
+      <title>Docker入门</title>
       <link href="/2019/08/05/docker/docker-deploy/"/>
       <url>/2019/08/05/docker/docker-deploy/</url>
       
-        <content type="html"><![CDATA[<h2 id="1-安装Docker"><a href="#1-安装Docker" class="headerlink" title="1.安装Docker"></a>1.安装Docker</h2><pre><code>     curl -sSL https://get.docker.com/ | sh </code></pre><h2 id="2-启动Docker"><a href="#2-启动Docker" class="headerlink" title="2.启动Docker"></a>2.启动Docker</h2><pre><code>    service docker start </code></pre><blockquote><p>查看docker版本信息 </p><pre><code>    docker version</code></pre></blockquote><h2 id="3-docker-安装java环境"><a href="#3-docker-安装java环境" class="headerlink" title="3.docker 安装java环境"></a>3.docker 安装java环境</h2><h2 id="4-docker-安装maven环境"><a href="#4-docker-安装maven环境" class="headerlink" title="4.docker 安装maven环境"></a>4.docker 安装maven环境</h2><h2 id="5-docker-安装mysql环境"><a href="#5-docker-安装mysql环境" class="headerlink" title="5.docker 安装mysql环境"></a>5.docker 安装mysql环境</h2>]]></content>
+        <content type="html"><![CDATA[<h2 id="1-安装Docker"><a href="#1-安装Docker" class="headerlink" title="1.安装Docker"></a>1.安装Docker</h2><pre><code> curl -sSL https://get.docker.com/ | sh </code></pre><h2 id="2-启动Docker"><a href="#2-启动Docker" class="headerlink" title="2.启动Docker"></a>2.启动Docker</h2><pre><code>service docker start </code></pre><blockquote><p>查看docker版本信息 </p></blockquote><pre><code>docker version</code></pre><h2 id="3-镜像"><a href="#3-镜像" class="headerlink" title="3.镜像"></a>3.镜像</h2><blockquote><p>docker中的镜像就像我们平时下载软件的安装包一样，或者说是exe可执行文件，<br>我们可以通过查找镜像，来进行下载</p></blockquote><h3 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h3><pre><code>docker search 镜像名称如：docker search java</code></pre><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><pre><code>docker pull 镜像名称如：docker pull java</code></pre><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><pre><code>docker image ls 或者 docker images</code></pre><h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><pre><code>docker image rm fce289e99eb9强制删除docker rmi -f fce289e99eb9</code></pre><h2 id="4-容器"><a href="#4-容器" class="headerlink" title="4.容器"></a>4.容器</h2><blockquote><p>我们下载可执行文件之后，要通过命令去启动他，才可以使用这个软件，<br>我们容器就相当于启动后的软件，我们才能再这个软件上进行操作</p></blockquote><h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><pre><code>docker run -d -p 8080:80 hub.c.163.com/library/nginx </code></pre><p>参数：  </p><pre><code>-d 后台运行-p 端口映射，把docker的80端口映射到主机的8080端口上-v 目录映射 -v /usr/nginx/:/etc/home 把docker的/etc/home映射到/usr/nginx目录</code></pre><h3 id="查看容器状态"><a href="#查看容器状态" class="headerlink" title="查看容器状态"></a>查看容器状态</h3><pre><code>docker ps -a</code></pre><h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><pre><code>docker exec -it 69d1 bash或者docker attach 69d1</code></pre><h3 id="暂停容器"><a href="#暂停容器" class="headerlink" title="暂停容器"></a>暂停容器</h3><pre><code>docker pause myjava</code></pre><h3 id="恢复容器运行"><a href="#恢复容器运行" class="headerlink" title="恢复容器运行"></a>恢复容器运行</h3><pre><code>docker unpause myjava</code></pre><h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><pre><code>docker stop myjava</code></pre><h3 id="恢复容器运行-1"><a href="#恢复容器运行-1" class="headerlink" title="恢复容器运行"></a>恢复容器运行</h3><pre><code>docker start -i myjava</code></pre><p>注意：删除容器之前需要先停止容器的运行</p><h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><blockquote><p>用命令<code>exit</code>进行容器退出<br>用<code>exec</code>命令进入的退出后容器还在后台运行<br>用<code>attach</code>命令进入的退出后，容器就停止运行了</p></blockquote><h3 id="容器导出"><a href="#容器导出" class="headerlink" title="容器导出"></a>容器导出</h3><blockquote><p>使用命令<code>docker save 镜像名称 &gt; 文件保存的位置</code> 进行容器的导出，例如</p><pre><code>docker save java &gt; /home/java.tar.gz</code></pre></blockquote><h3 id="容器导入"><a href="#容器导入" class="headerlink" title="容器导入"></a>容器导入</h3><blockquote><p>使用命令<code>docker load &lt; 文件</code> 进行容器的导出，例如</p><pre><code>docker load &lt; /home/java.tar.gz</code></pre></blockquote>]]></content>
       
       
       <categories>
