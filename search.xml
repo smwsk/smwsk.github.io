@@ -22,7 +22,7 @@
             
             <tag> Docker </tag>
             
-            <tag> Mysql </tag>
+            <tag> Java </tag>
             
         </tags>
       
@@ -35,7 +35,7 @@
       <link href="/2019/08/06/docker/docker-mysql/"/>
       <url>/2019/08/06/docker/docker-mysql/</url>
       
-        <content type="html"><![CDATA[<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><blockquote><p>docker pull mysql</p></blockquote><p>## </p>]]></content>
+        <content type="html"><![CDATA[<h2 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h2><pre><code>docker search mysql</code></pre><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><pre><code>docker pull mysql</code></pre><h2 id="查看安装的镜像"><a href="#查看安装的镜像" class="headerlink" title="查看安装的镜像"></a>查看安装的镜像</h2><pre><code>docker images</code></pre><h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><pre><code>docker run --name some-mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=Wsk1234.. -e MYSQL_DATABASE=renren-fast -d mysql:latest</code></pre><p>参数：</p><pre><code>--name 给容器取个名称-p 端口映射，把docker内部的3306端口映射到主机的3307端口-e mysql环境参数 更详情的参考 https://hub.docker.com/_/mysql-d 在后台运行MYSQL_ROOT_PASSWORD 数据库密码MYSQL_DATABASE 初始化一个数据库</code></pre><h2 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h2><blockquote><p>当前的新建出来的数据库还无法远程连接，要进行登录到mysql中进行修改配置</p></blockquote><h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><pre><code>docker exec -it 0abb bash</code></pre><blockquote><p>oabb 指的是容器的id(不用全写，只要前缀能唯一确定的mysql容器的id即可),容器id可以通过<br>docker images 进行查看</p></blockquote><h3 id="登录mysql"><a href="#登录mysql" class="headerlink" title="登录mysql"></a>登录mysql</h3><blockquote><p>进入容器后，通过mysql命令进行登录后进行修改配置</p><pre><code>root@0abbaf97c7d6:/# mysql -uroot -p</code></pre></blockquote><h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><blockquote><p>mysql5.0版本用以下命令</p><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION;</code></pre></blockquote><blockquote><p>mysql8.0版本用以下命令</p></blockquote><pre><code>use mysql;update user set host=&#39;%&#39; where user=&#39;root&#39;;GRANT ALL ON *.* TO &#39;root&#39;@&#39;%&#39;;ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;Zr12345..&#39;;#语句生效FLUSH PRIVILEGES;</code></pre><blockquote><p>用mysql8.0版本的时候，如果遇到一下情况</p><pre><code>ERROR 1062 (23000): Duplicate entry &#39;%-root&#39; for key &#39;PRIMARY&#39;</code></pre><p>说明use表中的root用户有两条记录，删掉限权是本地的就可以了</p><pre><code>delete from user where user=&#39;root&#39; and host=&#39;localhost&#39;;</code></pre></blockquote>]]></content>
       
       
       <categories>
