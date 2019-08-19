@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/smwsk/"/>
-  <updated>2019-08-06T09:26:32.101Z</updated>
+  <updated>2019-08-19T07:37:45.978Z</updated>
   <id>https://github.com/smwsk/</id>
   
   <author>
@@ -17,11 +17,70 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Vue部署到阿里云OSS对象存储</title>
+    <link href="https://github.com/smwsk/2019/08/16/vue/vue-deploy/"/>
+    <id>https://github.com/smwsk/2019/08/16/vue/vue-deploy/</id>
+    <published>2019-08-16T07:35:42.811Z</published>
+    <updated>2019-08-19T07:37:45.978Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;我目前使用的是人人开源的renren-fast管理后台,在这个基础上进行修改功能，确实能比较快的交付一些简单的项目&lt;br&gt;人人开源项目是前后端分离的，平时我们可以用nginx来进行映射部署前端项目。不过这个不是我们今天的主题，我们今天的&lt;br&gt;主题
+        
+      
+    
+    </summary>
+    
+      <category term="Vue" scheme="https://github.com/smwsk/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://github.com/smwsk/tags/Vue/"/>
+    
+      <category term="OSS" scheme="https://github.com/smwsk/tags/OSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring @Transactional事务注解</title>
+    <link href="https://github.com/smwsk/2019/08/07/java/springmvc/springmvc-transactional/"/>
+    <id>https://github.com/smwsk/2019/08/07/java/springmvc/springmvc-transactional/</id>
+    <published>2019-08-07T09:04:36.672Z</published>
+    <updated>2019-08-19T09:52:36.503Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="https://github.com/smwsk/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://github.com/smwsk/tags/JAVA/"/>
+    
+      <category term="Spring" scheme="https://github.com/smwsk/tags/Spring/"/>
+    
+      <category term="Transactional" scheme="https://github.com/smwsk/tags/Transactional/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker安装JAVA</title>
     <link href="https://github.com/smwsk/2019/08/06/docker/docker-java/"/>
     <id>https://github.com/smwsk/2019/08/06/docker/docker-java/</id>
     <published>2019-08-06T08:18:45.504Z</published>
-    <updated>2019-08-06T09:26:32.101Z</updated>
+    <updated>2019-08-07T03:33:18.555Z</updated>
     
     <summary type="html">
     
@@ -42,7 +101,7 @@
     
       <category term="Docker" scheme="https://github.com/smwsk/tags/Docker/"/>
     
-      <category term="Java" scheme="https://github.com/smwsk/tags/Java/"/>
+      <category term="JAVA" scheme="https://github.com/smwsk/tags/JAVA/"/>
     
   </entry>
   
@@ -79,7 +138,7 @@
     <link href="https://github.com/smwsk/2019/08/05/docker/docker-deploy/"/>
     <id>https://github.com/smwsk/2019/08/05/docker/docker-deploy/</id>
     <published>2019-08-05T01:35:48.933Z</published>
-    <updated>2019-08-07T03:20:12.518Z</updated>
+    <updated>2019-08-07T03:33:15.159Z</updated>
     
     <summary type="html">
     
@@ -97,8 +156,6 @@
     
     
       <category term="Docker" scheme="https://github.com/smwsk/tags/Docker/"/>
-    
-      <category term="JAVA" scheme="https://github.com/smwsk/tags/JAVA/"/>
     
   </entry>
   
@@ -191,7 +248,7 @@
     <link href="https://github.com/smwsk/2019/07/26/study-markdown/"/>
     <id>https://github.com/smwsk/2019/07/26/study-markdown/</id>
     <published>2019-07-26T15:55:22.363Z</published>
-    <updated>2019-07-28T08:47:50.600Z</updated>
+    <updated>2019-08-19T07:48:23.830Z</updated>
     
     <summary type="html">
     

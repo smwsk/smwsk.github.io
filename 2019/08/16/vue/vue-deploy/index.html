@@ -4,13 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="CTF第二题-Xss漏洞, smwsk blog">
-    <meta name="description" content="xss的类型  xss漏洞的类型分为3种:
-反射型XSS
-恶意代码并没有保存在目标网站，通过引诱用户点击一个链接到目标网站的恶意链接来实施攻击的。
-
-存储型XSS
-把恶意的JavaScript,Html代码存储在目标网站的数据库上，正常都是">
+    <meta name="keywords" content="Vue部署到阿里云OSS对象存储, smwsk blog">
+    <meta name="description" content="
+我目前使用的是人人开源的renren-fast管理后台,在这个基础上进行修改功能，确实能比较快的交付一些简单的项目人人开源项目是前后端分离的，平时我们可以用nginx来进行映射部署前端项目。不过这个不是我们今天的主题，我们今天的主题是要把">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>CTF第二题-Xss漏洞 | Smwsk&#39;s Blog</title>
+    <title>Vue部署到阿里云OSS对象存储 | Smwsk&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,7 +263,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        CTF第二题-Xss漏洞
+                        Vue部署到阿里云OSS对象存储
                     </div>
                 </div>
             </div>
@@ -378,12 +374,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CTF/" target="_blank">
-                                <span class="chip bg-color">CTF</span>
+                            <a href="/tags/Vue/" target="_blank">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
-                            <a href="/tags/XSS漏洞/" target="_blank">
-                                <span class="chip bg-color">XSS漏洞</span>
+                            <a href="/tags/OSS/" target="_blank">
+                                <span class="chip bg-color">OSS</span>
                             </a>
                         
                     </div>
@@ -394,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                CTF
+                            <a href="/categories/Vue/" class="post-category" target="_blank">
+                                Vue
                             </a>
                         
                     </div>
@@ -406,21 +402,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-29
+                    2019-08-16
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        372
+                        584
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -436,29 +432,37 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="xss的类型"><a href="#xss的类型" class="headerlink" title="xss的类型"></a>xss的类型</h2><p>  xss漏洞的类型分为3种:</p>
-<h3 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><blockquote>
-<p>恶意代码并没有保存在目标网站，通过引诱用户点击一个链接到目标网站的恶意链接来实施攻击的。</p>
+                <blockquote>
+<p>我目前使用的是人人开源的renren-fast管理后台,在这个基础上进行修改功能，确实能比较快的交付一些简单的项目<br>人人开源项目是前后端分离的，平时我们可以用nginx来进行映射部署前端项目。不过这个不是我们今天的主题，我们今天的<br>主题是要把前端部署到阿里云的对象存储(OSS)上面,因为我们对象存储管理后台上传不会自动创建文件夹，所以我们找个插件<br>实现代码自动部署。</p>
 </blockquote>
-<h3 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h3><blockquote>
-<p>把恶意的JavaScript,Html代码存储在目标网站的数据库上，正常都是通过评论，留言等方式。</p>
-</blockquote>
-<h3 id="DOM型-XSS"><a href="#DOM型-XSS" class="headerlink" title="DOM型 XSS"></a>DOM型 XSS</h3><blockquote>
-<p>利用DOM标签的属性,来触发JavaScript的恶意代码，例如</p>
-<pre><code>    &lt;img src=&quot;&quot; onerror=&quot;alert(1)&quot;&gt;&lt;/img&gt;</code></pre></blockquote>
-<p>本题总共有4个flag  </p>
-<blockquote>
-<p>第一个flag 在page的Title中，存在存储型XSS,我们将JavaScript代码填入title中，<br>会显示弹出框,返回主界面的时候就会发现flag。</p>
-<pre><code>    &lt;script&gt;alert(1)&lt;/script&gt;</code></pre></blockquote>
-<blockquote>
-<p>第二个flag是属于反射型XSS,存在edit编辑界面,在参数后面加个空格 ‘ 会获取到我们的flag。</p>
-<pre><code>    34.94.3.143/05bde5b27b/page/edit/1 &#39;</code></pre></blockquote>
-<blockquote>
-<p>第三个flag是属于DOM型XSS,存在了body中,我们在body中新增一句DOM型XSS代码,查看源代码就会发现我们的dom上就出现了第三个flag。</p>
-<pre><code>    &lt;img src=&quot;&quot; onerror=&quot;alert(1)&quot;&gt;&lt;/img&gt;</code></pre></blockquote>
-<blockquote>
-<p>第四个flag是属于越权漏洞，我们在新增界面的时候回发现id是从8开的，中间的3,4,5,6,7是无法访问的,会有个界面是403返回码,<br>我们可以尝试着从编辑界面进去看看,结果又找到了一个新的flag。</p>
-</blockquote>
+<h3 id="新建一个oss配置文件"><a href="#新建一个oss配置文件" class="headerlink" title="新建一个oss配置文件"></a>新建一个oss配置文件</h3><blockquote>
+<p>在根目录下新建一个oss.js文件(如图1)，文件内容为oss的配置</p>
+<pre><code>module.exports = {
+  region: &#39;oss-cn-shanghai&#39;, // eg. oss-cn-hangzhou
+  accessKeyId: &#39;XXXXXXXXXX&#39;,
+  accessKeySecret: &#39;XXXXXXXXXXXXXXXXXXXXXXXX&#39;,
+  bucket: &#39;XXXXX&#39;
+}</code></pre></blockquote>
+<pre><code>
+![图片1](/medias/vue/vue-oss-1.png)
+
+### 安装OSS上传插件</code></pre><p>npm install webpack-aliyun-oss -D</p>
+<pre><code>
+### 对webpack.prod.conf.js进行修改配置
+&gt;导入插件和配置文件</code></pre><p>const AliyunossWebpackPlugin = require(‘aliyunoss-webpack-plugin’)<br>const oss = require(‘../oss’)</p>
+<pre><code>在plugins最后面加入配置信息</code></pre><p>plugins: [<br>    …,<br>// 插入到最后面<br>new AliyunossWebpackPlugin({<br>    buildPath: ‘dist/**’,<br>    region: oss.region,<br>    accessKeyId: oss.accessKeyId,<br>    accessKeySecret: oss.accessKeySecret,<br>    bucket: oss.bucket,<br>    deleteAll: true,<br>    generateObjectPath: function(filename, file) {<br>        return file.replace(/dist//, ‘’)<br>    },<br>})<br>]</p>
+<pre><code>### 进行上传OSS
+&gt;目前我的解决方法是分成两部进行，第一步进行编译好运行的文件，第二部就是把运行的文件上传的oss上
+
+#### 执行编译
+&gt;第一次执行编译的时候把 new AliyunossWebpackPlugin({})这段内容给注释掉,然后执行 `npm run build --prod`,等待dist文件目录下的内容都生成完成后执行上传
+#### 上传编译内容
+&gt;第二次执行上传的时候把项目根路径下的gulpfile.js的文件中create:versionCatalog后面的内容注释掉然后执行 `npm run build --prod`</code></pre><p>gulp.start([‘build’, ‘create:versionCatalog’/* , ‘replace:cdnUrl’, ‘replace:version’, ‘concat:config’ */], function () {<br>  // 清除, 编译 / 处理项目中产生的文件<br>  del([<code>${distPath}/static</code>, <code>${versionPath}/static/config</code>])<br>})</p>
+<pre><code>&gt;在执行了两次npm run build --prod命令之后，我们的文件就上传到oss上面，目前的方案会多上传一些文件上去，还没找到更好的解决方法，如果你有
+更好的解决方法，可以在评论下留下的方法，thank！！！
+
+
+参考博客地址:</code></pre><p><a href="https://blog.csdn.net/weixin_45066862/article/details/92671531" target="_blank" rel="noopener">https://blog.csdn.net/weixin_45066862/article/details/92671531</a><br>```</p>
 
             </div>
             <hr/>
@@ -617,9 +621,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《CTF第二题-Xss漏洞》
+                    《Vue部署到阿里云OSS对象存储》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/29/ctf/xss/xss-one/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/16/vue/vue-deploy/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Smwsk
             </a> 采用
@@ -659,49 +663,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/02/ctf/sqlmap/sqlmap-zero/">
+                <a href="/2019/08/16/vue/vue-deploy/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="sqlmap 常用命令">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Vue部署到阿里云OSS对象存储">
                         
-                        <span class="card-title">sqlmap 常用命令</span>
+                        <span class="card-title">Vue部署到阿里云OSS对象存储</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            输出等级 V
-V这个命令分为7个等级，不同的等级在控制台输出的内容不一样
-    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；
-    1：同时显示普通信息 [INF
+                            
+我目前使用的是人人开源的renren-fast管理后台,在这个基础上进行修改功能，确实能比较快的交付一些简单的项目人人开源项目是前后端分离的，平时我们可以用nginx来进行映射部署前端项目。不过这个不是我们今天的主题，我们今天的主题是要把
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/Vue/" class="post-category" target="_blank">
+                                    Vue
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqlmap/" target="_blank">
-                        <span class="chip bg-color">sqlmap</span>
+                    <a href="/tags/Vue/" target="_blank">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/OSS/" target="_blank">
+                        <span class="chip bg-color">OSS</span>
                     </a>
                     
                 </div>
@@ -715,32 +723,32 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/28/ctf/sqlmap/sqlmap-one/">
+                <a href="/2019/08/07/java/springmvc/springmvc-transactional/">
                     <div class="card-image">
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="Hacker101-sql注入入门">
                         
-                        <span class="card-title">Hacker101-sql注入入门</span>
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="Spring @Transactional事务注解">
+                        
+                        <span class="card-title">Spring @Transactional事务注解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hacker101中的第三题Micro-CMS v2主要考验的sql注入的问题  
-sql注入
-本题创建网页和编辑网页的时候都会提示限权问题，跳转到登录界面，所以我们只能从登录的入口进行入手我们使用burpSuite工具和sqlmap工具进
+                            使用场景
+在使用Transaction注解前，我们要先知道注解用在什么业务上面，比如我把一张表(table)的数据备份到另外一张历史表(table_history)的时候，我们要先把table的数据复制到table_history表，然后再
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                    JAVA
                                 </a>
                             
                             
@@ -750,12 +758,16 @@ sql注入
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CTF/" target="_blank">
-                        <span class="chip bg-color">CTF</span>
+                    <a href="/tags/JAVA/" target="_blank">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/sql注入/" target="_blank">
-                        <span class="chip bg-color">sql注入</span>
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/Transactional/" target="_blank">
+                        <span class="chip bg-color">Transactional</span>
                     </a>
                     
                 </div>

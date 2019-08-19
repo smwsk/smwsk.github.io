@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title>Vue部署到阿里云OSS对象存储</title>
+      <link href="/2019/08/16/vue/vue-deploy/"/>
+      <url>/2019/08/16/vue/vue-deploy/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>我目前使用的是人人开源的renren-fast管理后台,在这个基础上进行修改功能，确实能比较快的交付一些简单的项目<br>人人开源项目是前后端分离的，平时我们可以用nginx来进行映射部署前端项目。不过这个不是我们今天的主题，我们今天的<br>主题是要把前端部署到阿里云的对象存储(OSS)上面,因为我们对象存储管理后台上传不会自动创建文件夹，所以我们找个插件<br>实现代码自动部署。</p></blockquote><h3 id="新建一个oss配置文件"><a href="#新建一个oss配置文件" class="headerlink" title="新建一个oss配置文件"></a>新建一个oss配置文件</h3><blockquote><p>在根目录下新建一个oss.js文件(如图1)，文件内容为oss的配置</p><pre><code>module.exports = {  region: &#39;oss-cn-shanghai&#39;, // eg. oss-cn-hangzhou  accessKeyId: &#39;XXXXXXXXXX&#39;,  accessKeySecret: &#39;XXXXXXXXXXXXXXXXXXXXXXXX&#39;,  bucket: &#39;XXXXX&#39;}</code></pre></blockquote><pre><code>![图片1](/medias/vue/vue-oss-1.png)### 安装OSS上传插件</code></pre><p>npm install webpack-aliyun-oss -D</p><pre><code>### 对webpack.prod.conf.js进行修改配置&gt;导入插件和配置文件</code></pre><p>const AliyunossWebpackPlugin = require(‘aliyunoss-webpack-plugin’)<br>const oss = require(‘../oss’)</p><pre><code>在plugins最后面加入配置信息</code></pre><p>plugins: [<br>    …,<br>// 插入到最后面<br>new AliyunossWebpackPlugin({<br>    buildPath: ‘dist/**’,<br>    region: oss.region,<br>    accessKeyId: oss.accessKeyId,<br>    accessKeySecret: oss.accessKeySecret,<br>    bucket: oss.bucket,<br>    deleteAll: true,<br>    generateObjectPath: function(filename, file) {<br>        return file.replace(/dist//, ‘’)<br>    },<br>})<br>]</p><pre><code>### 进行上传OSS&gt;目前我的解决方法是分成两部进行，第一步进行编译好运行的文件，第二部就是把运行的文件上传的oss上#### 执行编译&gt;第一次执行编译的时候把 new AliyunossWebpackPlugin({})这段内容给注释掉,然后执行 `npm run build --prod`,等待dist文件目录下的内容都生成完成后执行上传#### 上传编译内容&gt;第二次执行上传的时候把项目根路径下的gulpfile.js的文件中create:versionCatalog后面的内容注释掉然后执行 `npm run build --prod`</code></pre><p>gulp.start([‘build’, ‘create:versionCatalog’/* , ‘replace:cdnUrl’, ‘replace:version’, ‘concat:config’ */], function () {<br>  // 清除, 编译 / 处理项目中产生的文件<br>  del([<code>${distPath}/static</code>, <code>${versionPath}/static/config</code>])<br>})</p><pre><code>&gt;在执行了两次npm run build --prod命令之后，我们的文件就上传到oss上面，目前的方案会多上传一些文件上去，还没找到更好的解决方法，如果你有更好的解决方法，可以在评论下留下的方法，thank！！！参考博客地址:</code></pre><p><a href="https://blog.csdn.net/weixin_45066862/article/details/92671531" target="_blank" rel="noopener">https://blog.csdn.net/weixin_45066862/article/details/92671531</a><br>```</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> OSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spring @Transactional事务注解</title>
+      <link href="/2019/08/07/java/springmvc/springmvc-transactional/"/>
+      <url>/2019/08/07/java/springmvc/springmvc-transactional/</url>
+      
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>在使用Transaction注解前，我们要先知道注解用在什么业务上面，比如我把一张表(<code>table</code>)的数据备份到另外一张历史表(<code>table_history</code>)的时候，<br>我们要先把table的数据复制到table_history表，然后再删除table表的数据，如果我们中间一个环节出现异常，table数据没有复制到table_history表,<br>但是删除操作已经执行了，那就有问题了。这时候就要用Transaction来保证数据的统一性了。</p></blockquote><h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><p>事务有4个特性：ACID</p><h3 id="原子性（Atomicity）"><a href="#原子性（Atomicity）" class="headerlink" title="原子性（Atomicity）"></a>原子性（Atomicity）</h3><pre><code>事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。</code></pre><h3 id="一致性（Consistency）"><a href="#一致性（Consistency）" class="headerlink" title="一致性（Consistency）"></a>一致性（Consistency）</h3><pre><code>一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。在现实中的数据不应该被破坏。</code></pre><h3 id="隔离性（Isolation）"><a href="#隔离性（Isolation）" class="headerlink" title="隔离性（Isolation）"></a>隔离性（Isolation）</h3><pre><code>可能有许多事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏。</code></pre><h3 id="持久性（Durability）"><a href="#持久性（Durability）" class="headerlink" title="持久性（Durability）"></a>持久性（Durability）</h3><pre><code>一旦事务完成，无论发生什么系统错误，它的结果都不应该受到影响，这样就能从任何系统崩溃中恢复过来。通常情况下，事务的结果被写到持久化存储器中。</code></pre><h2 id="事务的传播"><a href="#事务的传播" class="headerlink" title="事务的传播"></a>事务的传播</h2><blockquote><p>Spring中的@Transaction是基于动态代理的机制，提供了一种透明的事务管理机制，在日常开发过程中一般是用@Transaction<br>注解来快速解决事务问题。<br>    @Transactional(propagation=Propagation.NOT_SUPPORTED)<br>Propagation事务的传播有7种不同的传播方式</p><pre><code>REQUIRED: 如果存在一个事务，则使用当前事务，如果没有事务则开启一个事务,Spring默认的事务传播级别.REQUIRES_NEW: 总是开启一个新的事务，如果一个事务已经存在，则将这个存在的事务挂起，执行当前新建事务完成以后，上下文事务恢复再执行。SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行。NOT_SUPPORTED: 总是非事务地执行，并挂起任何存在的事务。MANDATORY: 该级别的事务要求上下文中必须要存在事务，否则就会抛出异常。NEVER:要求上下文中不能存在事务，一旦有事务，就抛出runtime异常，强制停止执行。NESTED: 如果上下文中存在事务，则嵌套事务执行，如果不存在事务，则新建事务。</code></pre></blockquote><h2 id="数据隔离级别"><a href="#数据隔离级别" class="headerlink" title="数据隔离级别"></a>数据隔离级别</h2><blockquote><p>spring中使用@Transaction(isolation=Isolation.DEFAULT) 来指定隔离级别,Isolation.DEFAULT:为数据源的默认隔离级别</p></blockquote><table><thead><tr><th align="center">隔离级别</th><th align="center">脏读</th><th align="center">不可重复读取</th><th align="center">幻读</th></tr></thead><tbody><tr><td align="center">Serializable</td><td align="center">不会</td><td align="center">不会</td><td align="center">不会</td></tr><tr><td align="center">REPEATABLE_READ</td><td align="center">不会</td><td align="center">不会</td><td align="center">会</td></tr><tr><td align="center">READ_COMMITTED</td><td align="center">不会</td><td align="center">会</td><td align="center">会</td></tr><tr><td align="center">READ_UNCOMMITTED</td><td align="center">会</td><td align="center">会</td><td align="center">会</td></tr></tbody></table><pre><code>Serializable(序列化级别):提供了严格的事务隔离,要求事务序列化执行,只能一个接着一个执行,不能进行并行。REPEATABLE_READ(可重复读取级别):以操作同一行数据为前提,读事务禁止其他写事务（但允许其他读事务）。READ_COMMITTED(授权读取级别):以操作同一行数据为前提,读事务允许其他读事务和写事务,未提交的写事务禁止其他读事务和写事务。READ_UNCOMMITTED(未授权读取级别):以操作同一行数据为前提,读事务允许其他读事务和写事务,未提交的写事务禁止其他写事务（但允许其他读事务）。</code></pre><h2 id="Spring-注解管理事务的实现步骤"><a href="#Spring-注解管理事务的实现步骤" class="headerlink" title="Spring 注解管理事务的实现步骤"></a>Spring 注解管理事务的实现步骤</h2><blockquote><p>@Transactional注解管理事务的实现分为两步，第一步配置事务管理，第二部声明在哪个类或者哪个方法上使用事务注解()@Transactional。</p></blockquote><h3 id="xml配置事务管理器"><a href="#xml配置事务管理器" class="headerlink" title="xml配置事务管理器"></a>xml配置事务管理器</h3><pre><code>&lt;tx:annotation-driven /&gt; //开启事务注解&lt;bean id=&quot;transactionManager&quot;    class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;&lt;/bean&gt;</code></pre><h3 id="注解方式配置事务管理器"><a href="#注解方式配置事务管理器" class="headerlink" title="注解方式配置事务管理器"></a>注解方式配置事务管理器</h3><pre><code>@EnableTransactionManagement //启用事务管理功能@SpringBootApplicationpublic class DemoApplication {    // 其中 dataSource 框架会自动为我们注入    @Bean    public PlatformTransactionManager txManager(DataSource dataSource) {        return new DataSourceTransactionManager(dataSource);    }    public static void main(String[] args) {        SpringApplication.run(DemoApplication.class, args);    }}</code></pre><h3 id="自定义事务管理器"><a href="#自定义事务管理器" class="headerlink" title="自定义事务管理器"></a>自定义事务管理器</h3><pre><code>@Beanpublic PlatformTransactionManager transactionManager() {    JpaTransactionManager transactionManager = new JpaTransactionManager();    transactionManager.setDataSource(dataSource());    return transactionManager;}</code></pre><h2 id="避免-Spring-的-AOP-的自调用问题"><a href="#避免-Spring-的-AOP-的自调用问题" class="headerlink" title="避免 Spring 的 AOP 的自调用问题"></a>避免 Spring 的 AOP 的自调用问题</h2><blockquote><p>在Spring的AOP代理下,只有目标方法由外部调用,目标方法才由Spring生成的代理对象来管理,这会造成自调用问题。<br>若同一类中的其他没有@Transactional 注解的方法内部调用有@Transactional 注解的方法,有@Transactional注解的方法的事务被忽略,不会发生回滚<br>解决方法</p></blockquote><h3 id="使用AspectJ取代Spring-AOP代理"><a href="#使用AspectJ取代Spring-AOP代理" class="headerlink" title="使用AspectJ取代Spring AOP代理"></a>使用AspectJ取代Spring AOP代理</h3><blockquote><p>需要将下面的 AspectJ 信息添加到 xml 配置信息</p><pre><code>&lt;tx:annotation-driven mode=&quot;aspectj&quot; /&gt;&lt;bean id=&quot;transactionManager&quot;    class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;&lt;/bean&gt;&lt;bean class=&quot;org.springframework.transaction.aspectj.AnnotationTransactionAspect&quot;factory-method=&quot;aspectOf&quot;&gt;    &lt;property name=&quot;transactionManager&quot; ref=&quot;transactionManager&quot; /&gt;&lt;/bean&gt;</code></pre></blockquote><h3 id="使用手动获取Spring-Bean对象"><a href="#使用手动获取Spring-Bean对象" class="headerlink" title="使用手动获取Spring Bean对象"></a>使用手动获取Spring Bean对象</h3><blockquote><p>用SpringContextUtil.getBeanOfType()的方式,手动获取Spring生成的代理对象</p></blockquote><h2 id="Transactional不起作用的情况"><a href="#Transactional不起作用的情况" class="headerlink" title="@Transactional不起作用的情况"></a>@Transactional不起作用的情况</h2><pre><code>1.@Transactional应用的方法不是用public修饰2.事务级别设置为:    TransactionDefinition.PROPAGATION_SUPPORTS    TransactionDefinition.PROPAGATION_NOT_SUPPORTED    TransactionDefinition.PROPAGATION_SUPPORTS</code></pre><p>参考文章:<br>    <a href="https://www.ibm.com/developerworks/cn/java/j-master-spring-transactional-use/index.html" target="_blank" rel="noopener">IBM-Developer的@Transaction</a><br>    <a href="https://coolfire9201207034819.iteye.com/blog/1663544" target="_blank" rel="noopener">Spring事务的五个隔离级别</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> Transactional </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker安装JAVA</title>
       <link href="/2019/08/06/docker/docker-java/"/>
       <url>/2019/08/06/docker/docker-java/</url>
@@ -22,7 +78,7 @@
             
             <tag> Docker </tag>
             
-            <tag> Java </tag>
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -75,8 +131,6 @@
         <tags>
             
             <tag> Docker </tag>
-            
-            <tag> JAVA </tag>
             
         </tags>
       
