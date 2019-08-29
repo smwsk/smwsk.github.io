@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Spring-Cloud使用openFeign实现服务间的调用</title>
+      <link href="/2019/08/21/java/spring-cloud/openfeign/"/>
+      <url>/2019/08/21/java/spring-cloud/openfeign/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>今天我们记录一下openFeign实现SpringCloud微服务之间的调度，本文使用到的信息均来自<br><a href="https://github.com/smwsk/mall">springCloud搭建的商城</a>,本项目把客户端用到的实体类统一提取到<br>一个公共的common子项目中，防止项目中client和server中的实体的冗余。</p></blockquote><h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p><img src="/medias/loading.svg" data-original="/openfeign_files/1.png" alt="项目结构图"></p><h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><p><code>product商品模块</code></p><blockquote><p>product父模块的pom.xml 添加openFeign依赖</p></blockquote><pre><code>&lt;dependencies&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;         &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;    &lt;/dependency&gt;&lt;/dependencies&gt;</code></pre><blockquote><p>product-server子模块的pom.xml添加商品客户端依赖，用来实现客户端对外暴露的接口。</p></blockquote><pre><code>&lt;dependencies&gt;    &lt;dependency&gt;        &lt;groupId&gt;com.smwsk&lt;/groupId&gt;         &lt;artifactId&gt;product-client&lt;/artifactId&gt;        &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;    &lt;/dependency&gt;&lt;/dependencies&gt;</code></pre><blockquote><p>product-client子模块的pom.xml添加spring-web依赖,用于@RequestMapping(),@getMapping()等注解的使用。</p></blockquote><pre><code>&lt;dependency&gt;    &lt;groupId&gt;org.springframework&lt;/groupId&gt;    &lt;artifactId&gt;spring-web&lt;/artifactId&gt;&lt;/dependency&gt;</code></pre><p><code>order订单模块</code> </p><blockquote><p>order父模块的pom.xml 添加openFeign依赖</p></blockquote><pre><code>&lt;dependencies&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;        &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;    &lt;/dependency&gt;&lt;/dependencies&gt;</code></pre><blockquote><p>order-server子模块的pom.xml 添加商品模块客户端的依赖，因为我们到时候要调用商品模块的客户端接口</p></blockquote><pre><code>&lt;dependency&gt;    &lt;groupId&gt;com.smwsk&lt;/groupId&gt;    &lt;artifactId&gt;product-client&lt;/artifactId&gt;    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;&lt;/dependency&gt;</code></pre><blockquote><p>order-client子模块的pom.xml添加spring-web依赖,用于@RequestMapping(),@getMapping()等注解的使用。</p></blockquote><pre><code>&lt;dependency&gt;    &lt;groupId&gt;org.springframework&lt;/groupId&gt;    &lt;artifactId&gt;spring-web&lt;/artifactId&gt;&lt;/dependency&gt;</code></pre><h3 id="openFegin使用"><a href="#openFegin使用" class="headerlink" title="openFegin使用"></a>openFegin使用</h3><blockquote><p>在order服务的OrderServerApplication 类中添加@EnableFeignClients注解，开启feign通讯，<br>basePackages 指定扫描哪些客户端的包名，basePackages接收的可以是一个字符串数组。</p></blockquote><pre><code>@EnableFeignClients(basePackages = &quot;com.smwsk.product.client&quot;)</code></pre><h4 id="在order-server中调用product-client"><a href="#在order-server中调用product-client" class="headerlink" title="在order-server中调用product-client"></a>在order-server中调用product-client</h4><blockquote><p>直接引入spring bean管理的ProductClient对象 </p></blockquote><p>例子:</p><pre><code>@RestController@Slf4jpublic class ClientController {    @Autowired    private ProductClient productClient;    @RequestMapping(value = &quot;/getProductMsg&quot;)    public String getProductMsg(){        String msg = productClient.getMsg();        log.info(&quot;receive msg:{}&quot;,msg);        return msg;    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> SpringCloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringCloud </tag>
+            
+            <tag> OpenFeign </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue部署到阿里云OSS对象存储</title>
       <link href="/2019/08/16/vue/vue-deploy/"/>
       <url>/2019/08/16/vue/vue-deploy/</url>

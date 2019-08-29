@@ -4,9 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring @Transactional事务注解, smwsk blog">
-    <meta name="description" content="使用场景
-在使用Transaction注解前，我们要先知道注解用在什么业务上面，比如我把一张表(table)的数据备份到另外一张历史表(table_history)的时候，我们要先把table的数据复制到table_history表，然后再">
+    <meta name="keywords" content="Spring-Cloud使用openFeign实现服务间的调用, smwsk blog">
+    <meta name="description" content="
+今天我们记录一下openFeign实现SpringCloud微服务之间的调度，本文使用到的信息均来自springCloud搭建的商城,本项目把客户端用到的实体类统一提取到一个公共的common子项目中，防止项目中client和server">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spring @Transactional事务注解 | Smwsk&#39;s Blog</title>
+    <title>Spring-Cloud使用openFeign实现服务间的调用 | Smwsk&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -257,13 +257,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
 	<div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Spring @Transactional事务注解
+                        Spring-Cloud使用openFeign实现服务间的调用
                     </div>
                 </div>
             </div>
@@ -374,16 +374,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JAVA/" target="_blank">
-                                <span class="chip bg-color">JAVA</span>
+                            <a href="/tags/SpringCloud/" target="_blank">
+                                <span class="chip bg-color">SpringCloud</span>
                             </a>
                         
-                            <a href="/tags/Spring/" target="_blank">
-                                <span class="chip bg-color">Spring</span>
-                            </a>
-                        
-                            <a href="/tags/Transactional/" target="_blank">
-                                <span class="chip bg-color">Transactional</span>
+                            <a href="/tags/OpenFeign/" target="_blank">
+                                <span class="chip bg-color">OpenFeign</span>
                             </a>
                         
                     </div>
@@ -398,6 +394,10 @@
                                 JAVA
                             </a>
                         
+                            <a href="/categories/JAVA/SpringCloud/" class="post-category" target="_blank">
+                                SpringCloud
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -406,21 +406,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-07
+                    2019-08-21
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        512
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        2 分
                     </div>
                     
                 
@@ -436,107 +436,78 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote>
-<p>在使用Transaction注解前，我们要先知道注解用在什么业务上面，比如我把一张表(<code>table</code>)的数据备份到另外一张历史表(<code>table_history</code>)的时候，<br>我们要先把table的数据复制到table_history表，然后再删除table表的数据，如果我们中间一个环节出现异常，table数据没有复制到table_history表,<br>但是删除操作已经执行了，那就有问题了。这时候就要用Transaction来保证数据的统一性了。</p>
+                <blockquote>
+<p>今天我们记录一下openFeign实现SpringCloud微服务之间的调度，本文使用到的信息均来自<br><a href="https://github.com/smwsk/mall">springCloud搭建的商城</a>,本项目把客户端用到的实体类统一提取到<br>一个公共的common子项目中，防止项目中client和server中的实体的冗余。</p>
 </blockquote>
-<h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><p>事务有4个特性：ACID</p>
-<h3 id="原子性（Atomicity）"><a href="#原子性（Atomicity）" class="headerlink" title="原子性（Atomicity）"></a>原子性（Atomicity）</h3><pre><code>事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。</code></pre><h3 id="一致性（Consistency）"><a href="#一致性（Consistency）" class="headerlink" title="一致性（Consistency）"></a>一致性（Consistency）</h3><pre><code>一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。
-在现实中的数据不应该被破坏。</code></pre><h3 id="隔离性（Isolation）"><a href="#隔离性（Isolation）" class="headerlink" title="隔离性（Isolation）"></a>隔离性（Isolation）</h3><pre><code>可能有许多事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏。</code></pre><h3 id="持久性（Durability）"><a href="#持久性（Durability）" class="headerlink" title="持久性（Durability）"></a>持久性（Durability）</h3><pre><code>一旦事务完成，无论发生什么系统错误，它的结果都不应该受到影响，这样就能从任何系统崩溃中恢复过来。
-通常情况下，事务的结果被写到持久化存储器中。</code></pre><h2 id="事务的传播"><a href="#事务的传播" class="headerlink" title="事务的传播"></a>事务的传播</h2><blockquote>
-<p>Spring中的@Transaction是基于动态代理的机制，提供了一种透明的事务管理机制，在日常开发过程中一般是用@Transaction<br>注解来快速解决事务问题。<br>    @Transactional(propagation=Propagation.NOT_SUPPORTED)<br>Propagation事务的传播有7种不同的传播方式</p>
-<pre><code>REQUIRED: 如果存在一个事务，则使用当前事务，如果没有事务则开启一个事务,Spring默认的事务传播级别.
-REQUIRES_NEW: 总是开启一个新的事务，如果一个事务已经存在，则将这个存在的事务挂起，执行当前新建事务完成以后，上下文事务恢复再执行。
-SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行。
-NOT_SUPPORTED: 总是非事务地执行，并挂起任何存在的事务。
-MANDATORY: 该级别的事务要求上下文中必须要存在事务，否则就会抛出异常。
-NEVER:要求上下文中不能存在事务，一旦有事务，就抛出runtime异常，强制停止执行。
-NESTED: 如果上下文中存在事务，则嵌套事务执行，如果不存在事务，则新建事务。</code></pre></blockquote>
-<h2 id="数据隔离级别"><a href="#数据隔离级别" class="headerlink" title="数据隔离级别"></a>数据隔离级别</h2><blockquote>
-<p>spring中使用@Transaction(isolation=Isolation.DEFAULT) 来指定隔离级别,Isolation.DEFAULT:为数据源的默认隔离级别</p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p><img src="/medias/loading.svg" data-original="/openfeign_files/1.png" alt="项目结构图"></p>
+<h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><p><code>product商品模块</code></p>
+<blockquote>
+<p>product父模块的pom.xml 添加openFeign依赖</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">隔离级别</th>
-<th align="center">脏读</th>
-<th align="center">不可重复读取</th>
-<th align="center">幻读</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Serializable</td>
-<td align="center">不会</td>
-<td align="center">不会</td>
-<td align="center">不会</td>
-</tr>
-<tr>
-<td align="center">REPEATABLE_READ</td>
-<td align="center">不会</td>
-<td align="center">不会</td>
-<td align="center">会</td>
-</tr>
-<tr>
-<td align="center">READ_COMMITTED</td>
-<td align="center">不会</td>
-<td align="center">会</td>
-<td align="center">会</td>
-</tr>
-<tr>
-<td align="center">READ_UNCOMMITTED</td>
-<td align="center">会</td>
-<td align="center">会</td>
-<td align="center">会</td>
-</tr>
-</tbody></table>
-<pre><code>Serializable(序列化级别):提供了严格的事务隔离,要求事务序列化执行,只能一个接着一个执行,不能进行并行。
-REPEATABLE_READ(可重复读取级别):以操作同一行数据为前提,读事务禁止其他写事务（但允许其他读事务）。
-READ_COMMITTED(授权读取级别):以操作同一行数据为前提,读事务允许其他读事务和写事务,未提交的写事务禁止其他读事务和写事务。
-READ_UNCOMMITTED(未授权读取级别):以操作同一行数据为前提,读事务允许其他读事务和写事务,未提交的写事务禁止其他写事务（但允许其他读事务）。</code></pre><h2 id="Spring-注解管理事务的实现步骤"><a href="#Spring-注解管理事务的实现步骤" class="headerlink" title="Spring 注解管理事务的实现步骤"></a>Spring 注解管理事务的实现步骤</h2><blockquote>
-<p>@Transactional注解管理事务的实现分为两步，第一步配置事务管理，第二部声明在哪个类或者哪个方法上使用事务注解()@Transactional。</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><blockquote>
+<p>product-server子模块的pom.xml添加商品客户端依赖，用来实现客户端对外暴露的接口。</p>
 </blockquote>
-<h3 id="xml配置事务管理器"><a href="#xml配置事务管理器" class="headerlink" title="xml配置事务管理器"></a>xml配置事务管理器</h3><pre><code>&lt;tx:annotation-driven /&gt; //开启事务注解
-&lt;bean id=&quot;transactionManager&quot;
-    class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
-&lt;/bean&gt;</code></pre><h3 id="注解方式配置事务管理器"><a href="#注解方式配置事务管理器" class="headerlink" title="注解方式配置事务管理器"></a>注解方式配置事务管理器</h3><pre><code>@EnableTransactionManagement //启用事务管理功能
-@SpringBootApplication
-public class DemoApplication {
-    // 其中 dataSource 框架会自动为我们注入
-    @Bean
-    public PlatformTransactionManager txManager(DataSource dataSource) {
-        return new DataSourceTransactionManager(dataSource);
-    }
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
-}</code></pre><h3 id="自定义事务管理器"><a href="#自定义事务管理器" class="headerlink" title="自定义事务管理器"></a>自定义事务管理器</h3><pre><code>@Bean
-public PlatformTransactionManager transactionManager() {
-    JpaTransactionManager transactionManager = new JpaTransactionManager();
-    transactionManager.setDataSource(dataSource());
-    return transactionManager;
-}</code></pre><h2 id="避免-Spring-的-AOP-的自调用问题"><a href="#避免-Spring-的-AOP-的自调用问题" class="headerlink" title="避免 Spring 的 AOP 的自调用问题"></a>避免 Spring 的 AOP 的自调用问题</h2><blockquote>
-<p>在Spring的AOP代理下,只有目标方法由外部调用,目标方法才由Spring生成的代理对象来管理,这会造成自调用问题。<br>若同一类中的其他没有@Transactional 注解的方法内部调用有@Transactional 注解的方法,有@Transactional注解的方法的事务被忽略,不会发生回滚<br>解决方法</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.smwsk&lt;/groupId&gt;
+         &lt;artifactId&gt;product-client&lt;/artifactId&gt;
+        &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><blockquote>
+<p>product-client子模块的pom.xml添加spring-web依赖,用于@RequestMapping(),@getMapping()等注解的使用。</p>
 </blockquote>
-<h3 id="使用AspectJ取代Spring-AOP代理"><a href="#使用AspectJ取代Spring-AOP代理" class="headerlink" title="使用AspectJ取代Spring AOP代理"></a>使用AspectJ取代Spring AOP代理</h3><blockquote>
-<p>需要将下面的 AspectJ 信息添加到 xml 配置信息</p>
-<pre><code>&lt;tx:annotation-driven mode=&quot;aspectj&quot; /&gt;
-&lt;bean id=&quot;transactionManager&quot;
-    class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
-&lt;/bean&gt;
-&lt;bean class=&quot;org.springframework.transaction.aspectj.AnnotationTransactionAspect&quot;
-factory-method=&quot;aspectOf&quot;&gt;
-    &lt;property name=&quot;transactionManager&quot; ref=&quot;transactionManager&quot; /&gt;
-&lt;/bean&gt;</code></pre></blockquote>
-<h3 id="使用手动获取Spring-Bean对象"><a href="#使用手动获取Spring-Bean对象" class="headerlink" title="使用手动获取Spring Bean对象"></a>使用手动获取Spring Bean对象</h3><blockquote>
-<p>用SpringContextUtil.getBeanOfType()的方式,手动获取Spring生成的代理对象</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre><p><code>order订单模块</code> </p>
+<blockquote>
+<p>order父模块的pom.xml 添加openFeign依赖</p>
 </blockquote>
-<h2 id="Transactional不起作用的情况"><a href="#Transactional不起作用的情况" class="headerlink" title="@Transactional不起作用的情况"></a>@Transactional不起作用的情况</h2><pre><code>1.@Transactional应用的方法不是用public修饰
-2.事务级别设置为:
-    TransactionDefinition.PROPAGATION_SUPPORTS
-    TransactionDefinition.PROPAGATION_NOT_SUPPORTED
-    TransactionDefinition.PROPAGATION_SUPPORTS</code></pre><p>参考文章:<br>    <a href="https://www.ibm.com/developerworks/cn/java/j-master-spring-transactional-use/index.html" target="_blank" rel="noopener">IBM-Developer的@Transaction</a><br>    <a href="https://coolfire9201207034819.iteye.com/blog/1663544" target="_blank" rel="noopener">Spring事务的五个隔离级别</a></p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><blockquote>
+<p>order-server子模块的pom.xml 添加商品模块客户端的依赖，因为我们到时候要调用商品模块的客户端接口</p>
+</blockquote>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.smwsk&lt;/groupId&gt;
+    &lt;artifactId&gt;product-client&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre><blockquote>
+<p>order-client子模块的pom.xml添加spring-web依赖,用于@RequestMapping(),@getMapping()等注解的使用。</p>
+</blockquote>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre><h3 id="openFegin使用"><a href="#openFegin使用" class="headerlink" title="openFegin使用"></a>openFegin使用</h3><blockquote>
+<p>在order服务的OrderServerApplication 类中添加@EnableFeignClients注解，开启feign通讯，<br>basePackages 指定扫描哪些客户端的包名，basePackages接收的可以是一个字符串数组。</p>
+</blockquote>
+<pre><code>@EnableFeignClients(basePackages = &quot;com.smwsk.product.client&quot;)</code></pre><h4 id="在order-server中调用product-client"><a href="#在order-server中调用product-client" class="headerlink" title="在order-server中调用product-client"></a>在order-server中调用product-client</h4><blockquote>
+<p>直接引入spring bean管理的ProductClient对象 </p>
+</blockquote>
+<p>例子:</p>
+<pre><code>@RestController
+@Slf4j
+public class ClientController {
 
+    @Autowired
+    private ProductClient productClient;
+
+    @RequestMapping(value = &quot;/getProductMsg&quot;)
+    public String getProductMsg(){
+        String msg = productClient.getMsg();
+        log.info(&quot;receive msg:{}&quot;,msg);
+        return msg;
+    }
+}
+</code></pre>
             </div>
             <hr/>
 
@@ -694,9 +665,9 @@ factory-method=&quot;aspectOf&quot;&gt;
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Spring @Transactional事务注解》
+                    《Spring-Cloud使用openFeign实现服务间的调用》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/07/java/springmvc/springmvc-transactional/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/21/java/spring-cloud/openfeign/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Smwsk
             </a> 采用
@@ -736,9 +707,69 @@ factory-method=&quot;aspectOf&quot;&gt;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/08/21/java/spring-cloud/openfeign/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring-Cloud使用openFeign实现服务间的调用">
+                        
+                        <span class="card-title">Spring-Cloud使用openFeign实现服务间的调用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+今天我们记录一下openFeign实现SpringCloud微服务之间的调度，本文使用到的信息均来自springCloud搭建的商城,本项目把客户端用到的实体类统一提取到一个公共的common子项目中，防止项目中client和server
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/SpringCloud/" class="post-category" target="_blank">
+                                    SpringCloud
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpringCloud/" target="_blank">
+                        <span class="chip bg-color">SpringCloud</span>
+                    </a>
+                    
+                    <a href="/tags/OpenFeign/" target="_blank">
+                        <span class="chip bg-color">OpenFeign</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/08/16/vue/vue-deploy/">
                     <div class="card-image">
@@ -757,9 +788,9 @@ factory-method=&quot;aspectOf&quot;&gt;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -781,63 +812,6 @@ factory-method=&quot;aspectOf&quot;&gt;
                     
                     <a href="/tags/OSS/" target="_blank">
                         <span class="chip bg-color">OSS</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/08/06/docker/docker-java/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/14.jpg" class="responsive-img" alt="Docker安装JAVA">
-                        
-                        <span class="card-title">Docker安装JAVA</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            查找镜像
-命令:
-docker search java执行结果:
-Last login: Tue Aug  6 15:50:02 2019 from 110.87.82.244
-[root@vultr ~]# docker search j
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Docker/" class="post-category" target="_blank">
-                                    Docker
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Docker/" target="_blank">
-                        <span class="chip bg-color">Docker</span>
-                    </a>
-                    
-                    <a href="/tags/JAVA/" target="_blank">
-                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
                 </div>
