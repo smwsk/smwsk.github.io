@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/smwsk/"/>
-  <updated>2019-08-29T06:40:56.905Z</updated>
+  <updated>2019-09-05T07:26:49.487Z</updated>
   <id>https://github.com/smwsk/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 使用Scrapy爬虫框架</title>
+    <link href="https://github.com/smwsk/2019/09/04/python/gecco/"/>
+    <id>https://github.com/smwsk/2019/09/04/python/gecco/</id>
+    <published>2019-09-04T06:13:28.380Z</published>
+    <updated>2019-09-05T07:26:49.487Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;安装环境&quot;&gt;&lt;a href=&quot;#安装环境&quot; class=&quot;headerlink&quot; title=&quot;安装环境&quot;&gt;&lt;/a&gt;安装环境&lt;/h2&gt;&lt;h3 id=&quot;安装Scrapy&quot;&gt;&lt;a href=&quot;#安装Scrapy&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://github.com/smwsk/categories/Python/"/>
+    
+      <category term="Scrapy" scheme="https://github.com/smwsk/categories/Python/Scrapy/"/>
+    
+    
+      <category term="爬虫" scheme="https://github.com/smwsk/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python" scheme="https://github.com/smwsk/tags/Python/"/>
+    
+      <category term="Scrapy" scheme="https://github.com/smwsk/tags/Scrapy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloud zuul网关</title>
+    <link href="https://github.com/smwsk/2019/08/29/java/spring-cloud/api-gateway/"/>
+    <id>https://github.com/smwsk/2019/08/29/java/spring-cloud/api-gateway/</id>
+    <published>2019-08-29T06:46:48.966Z</published>
+    <updated>2019-08-29T07:03:51.536Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="JAVA" scheme="https://github.com/smwsk/tags/JAVA/"/>
+    
+      <category term="SpringCloud" scheme="https://github.com/smwsk/tags/SpringCloud/"/>
+    
+      <category term="Zuul" scheme="https://github.com/smwsk/tags/Zuul/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring-Cloud使用openFeign实现服务间的调用</title>

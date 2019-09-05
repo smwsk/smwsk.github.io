@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Python 使用Scrapy爬虫框架</title>
+      <link href="/2019/09/04/python/gecco/"/>
+      <url>/2019/09/04/python/gecco/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><h3 id="安装Scrapy"><a href="#安装Scrapy" class="headerlink" title="安装Scrapy"></a>安装Scrapy</h3><blockquote><p>scrapy 是一套基于Twisted的异步开发框架，是纯python 实现的爬虫框架。</p></blockquote><p>使用<code>conda</code>安装Scrapy 运行:<br><code>conda install -c conda-forge scrapy</code><br>或者熟悉了python包的安装，那么可以从pypi安装scrappy及其依赖项，方法是：</p><pre><code>pip3 install scrapy</code></pre><p>我采用的是pip安装,过程中遇到的问题</p><pre><code>Traceback (most recent call last):  File &quot;d:\study\python\anaconda3\lib\runpy.py&quot;, line 193, in _run_module_as_main    &quot;__main__&quot;, mod_spec)  File &quot;d:\study\python\anaconda3\lib\runpy.py&quot;, line 85, in _run_code    exec(code, run_globals)  File &quot;D:\Study\Python\Anaconda3\Scripts\scrapy.exe\__main__.py&quot;, line 5, in &lt;module&gt;  File &quot;d:\study\python\anaconda3\lib\site-packages\scrapy\__init__.py&quot;, line 34, in &lt;module&gt;    from scrapy.spiders import Spider  File &quot;d:\study\python\anaconda3\lib\site-packages\scrapy\spiders\__init__.py&quot;, line 10, in &lt;module&gt;    from scrapy.http import Request  File &quot;d:\study\python\anaconda3\lib\site-packages\scrapy\http\__init__.py&quot;, line 11, in &lt;module&gt;    from scrapy.http.request.form import FormRequest  File &quot;d:\study\python\anaconda3\lib\site-packages\scrapy\http\request\form.py&quot;, line 11, in &lt;module&gt;    import lxml.html  File &quot;d:\study\python\anaconda3\lib\site-packages\lxml\html\__init__.py&quot;, line 54, in &lt;module&gt;    from .. import etreeImportError: DLL load failed: 找不到指定的模块。</code></pre><blockquote><p>解决方法是参考博客<a href="https://www.cnblogs.com/shuibingyue/p/7090624.html" target="_blank" rel="noopener">lxml不含etree模块</a>,<br>我的python版本是<code>3.7.1</code>,下载的非官方whl文件是lxml-4.3.5-cp37-cp37m-win_amd64.whl</p></blockquote><pre><code>第一步：移除现在的lxml 运行命令：pip unistall lxml第二步：下载相应版本的lxml非官方whl文件，并安装lxml</code></pre><h3 id="安装Mongodb数据库"><a href="#安装Mongodb数据库" class="headerlink" title="安装Mongodb数据库"></a>安装Mongodb数据库</h3><p>windows 上安装Mongodb数据库 <a href="https://www.runoob.com/mongodb/mongodb-window-install.html" target="_blank" rel="noopener">安装教程</a></p><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><blockquote><p>创建爬虫项目icomic</p></blockquote><pre><code>scrapy startproject icomic</code></pre><h3 id="生成抓取的spider爬虫文件"><a href="#生成抓取的spider爬虫文件" class="headerlink" title="生成抓取的spider爬虫文件"></a>生成抓取的spider爬虫文件</h3><pre><code>scrapy genspider icomic_spider www.manhuatai.com</code></pre><h3 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h3><pre><code>scrapy crawl icomic_spider</code></pre><p><img src="/medias/loading.svg" data-original="python/scrapy-framework.jpg" alt="scrapy框架图"></p><p><a href="https://www.imooc.com/learn/1017" target="_blank" rel="noopener">视频教程</a></p><blockquote><p>注意的地方：<br>中间件定义之后要在setting里面启用,爬虫文件名和爬虫项目名称不能相同</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+          <category> Scrapy </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 爬虫 </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> Scrapy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringCloud zuul网关</title>
+      <link href="/2019/08/29/java/spring-cloud/api-gateway/"/>
+      <url>/2019/08/29/java/spring-cloud/api-gateway/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringCloud </tag>
+            
+            <tag> Zuul </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring-Cloud使用openFeign实现服务间的调用</title>
       <link href="/2019/08/21/java/spring-cloud/openfeign/"/>
       <url>/2019/08/21/java/spring-cloud/openfeign/</url>
