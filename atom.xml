@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/smwsk/"/>
-  <updated>2019-09-05T07:26:49.487Z</updated>
+  <updated>2019-09-09T03:22:56.199Z</updated>
   <id>https://github.com/smwsk/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 使用Django 搭建web应用</title>
+    <link href="https://github.com/smwsk/2019/09/05/python/python-django/"/>
+    <id>https://github.com/smwsk/2019/09/05/python/python-django/</id>
+    <published>2019-09-05T09:48:31.974Z</published>
+    <updated>2019-09-09T03:22:56.199Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环境安装&quot;&gt;&lt;a href=&quot;#环境安装&quot; class=&quot;headerlink&quot; title=&quot;环境安装&quot;&gt;&lt;/a&gt;环境安装&lt;/h2&gt;&lt;h3 id=&quot;Python-环境安装&quot;&gt;&lt;a href=&quot;#Python-环境安装&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://github.com/smwsk/categories/Python/"/>
+    
+      <category term="Django" scheme="https://github.com/smwsk/categories/Python/Django/"/>
+    
+      <category term="Web" scheme="https://github.com/smwsk/categories/Python/Django/Web/"/>
+    
+    
+      <category term="Python" scheme="https://github.com/smwsk/tags/Python/"/>
+    
+      <category term="Django" scheme="https://github.com/smwsk/tags/Django/"/>
+    
+  </entry>
   
   <entry>
     <title>Python 使用Scrapy爬虫框架</title>
@@ -53,11 +85,23 @@
     <link href="https://github.com/smwsk/2019/08/29/java/spring-cloud/api-gateway/"/>
     <id>https://github.com/smwsk/2019/08/29/java/spring-cloud/api-gateway/</id>
     <published>2019-08-29T06:46:48.966Z</published>
-    <updated>2019-08-29T07:03:51.536Z</updated>
+    <updated>2019-09-10T01:35:34.770Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h2 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h2&gt;&lt;h3 id=&quot;添加依赖&quot;&gt;&lt;a href=&quot;#添加依赖&quot; class=&quot;headerlink&quot;
+        
+      
+    
     </summary>
+    
+      <category term="SpringCloud" scheme="https://github.com/smwsk/categories/SpringCloud/"/>
+    
+      <category term="JAVA" scheme="https://github.com/smwsk/categories/SpringCloud/JAVA/"/>
     
     
       <category term="JAVA" scheme="https://github.com/smwsk/tags/JAVA/"/>

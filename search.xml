@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Python 使用Django 搭建web应用</title>
+      <link href="/2019/09/05/python/python-django/"/>
+      <url>/2019/09/05/python/python-django/</url>
+      
+        <content type="html"><![CDATA[<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="Python-环境安装"><a href="#Python-环境安装" class="headerlink" title="Python 环境安装"></a>Python 环境安装</h3><blockquote><p>下载python安装包进行安装，或者使用Anaconda进行安装，我本机是使用Anaconda的安装方式，<br>正常下载安装包之后，只要选择默认选项即可</p></blockquote><h3 id="Django环境安装"><a href="#Django环境安装" class="headerlink" title="Django环境安装"></a>Django环境安装</h3><blockquote><p>运行命令: <code>pip install django</code></p></blockquote><h2 id="Djangon-操作"><a href="#Djangon-操作" class="headerlink" title="Djangon 操作"></a>Djangon 操作</h2><h3 id="Djangon命令"><a href="#Djangon命令" class="headerlink" title="Djangon命令"></a>Djangon命令</h3><pre><code>startproject #创建一个Django项目startapp #创建一个Django应用check #校验项目完整性runserver #本地简易运行Django项目shell #进入Django项目的python shelltest #执行Django用例测试makemigrations #创建模型变更的迁移文件migrate #执行上一个命令创建的迁移文件dumpdata #把数据库数据导出到文件loaddata #把文件数据导入数据库</code></pre><blockquote><p>创建一个项目<br><code>django-admin startproject django_introduction</code>  </p></blockquote><blockquote><p>创建一个Django App应用<br><code>python manage.py stratapp blog</code> //创建Django App应用  </p></blockquote><h3 id="Django应用目录介绍"><a href="#Django应用目录介绍" class="headerlink" title="Django应用目录介绍"></a>Django应用目录介绍</h3><pre><code>views.py: 视图处理的地方models.py: 定义应用模型的地方admin.py: 定义Admin模块管理对象的地方apps.py:声明应用的地方tests.py:编写应用测试的地方urls.py:(自行创建)管理应用路由的地方</code></pre><blockquote><p>生成模型的迁移文件<br><code>python manage.py makemigrations</code>  </p></blockquote><blockquote><p>同步迁移文件到数据库<br><code>python manage.py migrate</code>  </p></blockquote><blockquote><p>进入Django Shell命令<br><code>python manage.py shell</code></p></blockquote><h3 id="Django-Admin模块使用"><a href="#Django-Admin模块使用" class="headerlink" title="Django Admin模块使用"></a>Django Admin模块使用</h3><blockquote><p>创建管理员用户<br><code>python manage.py createsuperuser</code></p></blockquote><blockquote><p>登录页面进行操作<br><code>python manage.py runserver</code>  </p></blockquote><h3 id="Django模板"><a href="#Django模板" class="headerlink" title="Django模板"></a>Django模板</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>变量 {{ title }}  for循环 {% for x in list%} {% endfor %}  if else判断 {% if %} {% else %} {% endif %}  </code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+          <category> Django </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python 使用Scrapy爬虫框架</title>
       <link href="/2019/09/04/python/gecco/"/>
       <url>/2019/09/04/python/gecco/</url>
@@ -39,8 +70,16 @@
       <link href="/2019/08/29/java/spring-cloud/api-gateway/"/>
       <url>/2019/08/29/java/spring-cloud/api-gateway/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><blockquote><p>在项目根目录下的pom.xml文件中添加依赖  </p></blockquote><pre><code>&lt;!--eureka客户端--&gt;&lt;dependency&gt;    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;&lt;/dependency&gt;&lt;!--网关--&gt;&lt;dependency&gt;    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;    &lt;artifactId&gt;spring-cloud-starter-netflix-zuul&lt;/artifactId&gt;&lt;/dependency&gt;</code></pre><h3 id="启动注解"><a href="#启动注解" class="headerlink" title="启动注解"></a>启动注解</h3><p>在启动类上添加注解 <code>@EnableZuulProxy</code>  </p><pre><code>@SpringBootApplication@EnableDiscoveryClient@EnableZuulProxypublic class ApiGatewayApplication {    public static void main(String[] args) {        SpringApplication.run(ApiGatewayApplication.class, args);    }}</code></pre><h3 id="配置网关信息"><a href="#配置网关信息" class="headerlink" title="配置网关信息"></a>配置网关信息</h3><p>在resource 目录下的bootstrap.yml文件中配置网关信息</p><pre><code>eureka:  client:    service-url:      defaultZone: http://localhost:8761/eureka/spring:  application:    name: api-gateway</code></pre><h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><h3 id="路由转发"><a href="#路由转发" class="headerlink" title="路由转发"></a>路由转发</h3><p>在bootstrap.yml里面进行配置路由转发的规则</p><pre><code>zuul:  routes:#  简介写法    product: /myProduct/**# 禁止访问的地址  ignored-patterns:    - /**/product/listForOrder</code></pre><h3 id="路由自定义"><a href="#路由自定义" class="headerlink" title="路由自定义"></a>路由自定义</h3><blockquote><p>在bootstrap.yml里面进行配置哪个服务的id,对应哪个地址</p><pre><code>zuul:  routes:</code></pre></blockquote><h1 id="简介写法"><a href="#简介写法" class="headerlink" title="简介写法"></a>简介写法</h1><pre><code>path: /myProduct/**serviceId: product</code></pre><pre><code>### Cookie从源码中我们可以知道我们默认是过来了请求头的`&quot;Cookie&quot;, &quot;Set-Cookie&quot;, &quot;Authorization&quot;`属性</code></pre><p>private Set<string> sensitiveHeaders = new LinkedHashSet&lt;&gt;(<br>    Arrays.asList(“Cookie”, “Set-Cookie”, “Authorization”`));</string></p><pre><code>如果我们要请求携带Cookie的话，只需要讲sensitiveHeaders设置为空就可以。</code></pre><p>zuul:<br>  routes:</p><h1 id="简介写法-1"><a href="#简介写法-1" class="headerlink" title="简介写法"></a>简介写法</h1><pre><code>product: /myProduct/**sensitiveHeaders:</code></pre><pre><code>### 动态路由通过统一配置中心动态获取参数信息，从而动态配置路由信息达到动态路由的效果</code></pre><p>@Component<br>public class ZuulConfig {</p><pre><code>@ConfigurationProperties(&quot;zull&quot;)@RefreshScopepublic ZuulProperties zuulProperties(){    return new ZuulProperties();}</code></pre><p>}</p><pre><code>## 高可用将多个Zuul节点注册到Eureka Server上即可实现Zuul的高可用## 过滤### Pre和Post过滤器前置过滤器的作用</code></pre><p>限流<br>鉴权<br>参数校验<br>请求转发</p><pre><code>后置过滤器的作用</code></pre><p>数据的统计<br>日志的记录</p><pre><code>## 限流&gt;如果一个项目中有既有限流，又有鉴权的话，限流的优先级应该优先于鉴权的优先级  &gt;新增一个限流过滤类实现网关过滤器</code></pre><p>/**</p><ul><li><p>令牌桶限流</p></li><li><p>/<br>@Component<br>public class RateLimitFilter extends ZuulFilter {<br>  /<strong>每秒100个令牌</strong>/<br>  private static final RateLimiter RATE_LIMITER = RateLimiter.create(100);<br>  @Override<br>  public String filterType() {</p><pre><code>  return PRE_TYPE;</code></pre><p>  }<br>  @Override<br>  public int filterOrder() {</p><pre><code>  return SERVLET_DETECTION_FILTER_ORDER - 1;</code></pre><p>  }<br>  @Override<br>  public boolean shouldFilter() {</p><pre><code>  return true;</code></pre><p>  }<br>  @Override<br>  public Object run() throws ZuulException {</p><pre><code>  if(!RATE_LIMITER.tryAcquire()){      throw new RateLimitException();  }  return null;</code></pre><p>  }<br>}</p></li></ul><pre><code>## 鉴权&gt;新建一个TokenFilter过滤类继承ZuulFilter类。</code></pre><p>@Component<br>public class TokenFilter extends ZuulFilter {<br>    @Override<br>    public String filterType() {<br>        return PRE_TYPE;<br>    }<br>    /**<br>     * 过滤值越小,执行优先级越高<br>     * @return<br>     */<br>    @Override<br>    public int filterOrder() {<br>        //减一，自定义的过滤器就会在PRE_DECORATION_FILTER_ORDER过滤器之前执行<br>        return PRE_DECORATION_FILTER_ORDER -1;<br>    }<br>    @Override<br>    public boolean shouldFilter() {<br>        return true;<br>    }<br>    @Override<br>    public Object run() throws ZuulException {<br>        RequestContext currentContext = RequestContext.getCurrentContext();<br>        HttpServletRequest request = currentContext.getRequest();</p><pre><code>    // 从url参数里获取，也可以从cookie，header里获取    String token = request.getParameter(&quot;token&quot;);    if(StringUtils.isEmpty(token)){        //token为空，限权校验不通过        currentContext.setSendZuulResponse(false);        currentContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());    }    return null;}</code></pre><p>}</p><pre><code>## 跨域在项目config配置文件包中,新增CorsConfig配置类  </code></pre><p>@Configuration<br>public class CorsConfig{<br>    @Bean<br>    public CorsFilter corsFilter(){<br>        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();<br>        CorsConfiguration configuration = new CorsConfiguration();<br>        configuration.setAllowCredentials(true);/<em>设置是否支持cookie跨域</em>/<br>        configuration.setAllowedOrigins(Arrays.asList(“*”));/<em>设置原始域 <a href="http://www.a.com" target="_blank" rel="noopener">http://www.a.com</a></em>/<br>        configuration.setAllowedHeaders(Arrays.asList(“*”));<br>        configuration.setAllowedMethods(Arrays.asList(“*”));<br>        configuration.setMaxAge(300l);//设置缓存时间<br>        source.registerCorsConfiguration(“/**”,configuration);<br>        return new CorsFilter();<br>    }<br>}</p><pre><code></code></pre>]]></content>
       
+      
+      <categories>
+          
+          <category> SpringCloud </category>
+          
+          <category> JAVA </category>
+          
+      </categories>
       
       
         <tags>

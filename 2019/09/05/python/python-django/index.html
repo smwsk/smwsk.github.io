@@ -4,12 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker入门, smwsk blog">
-    <meta name="description" content="1.安装Docker curl -sSL https://get.docker.com/ | sh 2.启动Dockerservice docker start 
-查看docker版本信息 
+    <meta name="keywords" content="Python 使用Django 搭建web应用, smwsk blog">
+    <meta name="description" content="环境安装Python 环境安装
+下载python安装包进行安装，或者使用Anaconda进行安装，我本机是使用Anaconda的安装方式，正常下载安装包之后，只要选择默认选项即可
 
-docker version3.镜像
-dock">
+Django环境安装
+运行命令: pip install ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@ dock">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Docker入门 | Smwsk&#39;s Blog</title>
+    <title>Python 使用Django 搭建web应用 | Smwsk&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,7 +266,7 @@ dock">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Docker入门
+                        Python 使用Django 搭建web应用
                     </div>
                 </div>
             </div>
@@ -377,8 +377,12 @@ dock">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker/" target="_blank">
-                                <span class="chip bg-color">Docker</span>
+                            <a href="/tags/Python/" target="_blank">
+                                <span class="chip bg-color">Python</span>
+                            </a>
+                        
+                            <a href="/tags/Django/" target="_blank">
+                                <span class="chip bg-color">Django</span>
                             </a>
                         
                     </div>
@@ -389,8 +393,16 @@ dock">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Docker/" class="post-category" target="_blank">
-                                Docker
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                Python
+                            </a>
+                        
+                            <a href="/categories/Python/Django/" class="post-category" target="_blank">
+                                Django
+                            </a>
+                        
+                            <a href="/categories/Python/Django/Web/" class="post-category" target="_blank">
+                                Web
                             </a>
                         
                     </div>
@@ -401,14 +413,14 @@ dock">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-05
+                    2019-09-05
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        433
+                        369
                     </div>
                     
 
@@ -431,37 +443,50 @@ dock">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-安装Docker"><a href="#1-安装Docker" class="headerlink" title="1.安装Docker"></a>1.安装Docker</h2><pre><code> curl -sSL https://get.docker.com/ | sh </code></pre><h2 id="2-启动Docker"><a href="#2-启动Docker" class="headerlink" title="2.启动Docker"></a>2.启动Docker</h2><pre><code>service docker start </code></pre><blockquote>
-<p>查看docker版本信息 </p>
+                <h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="Python-环境安装"><a href="#Python-环境安装" class="headerlink" title="Python 环境安装"></a>Python 环境安装</h3><blockquote>
+<p>下载python安装包进行安装，或者使用Anaconda进行安装，我本机是使用Anaconda的安装方式，<br>正常下载安装包之后，只要选择默认选项即可</p>
 </blockquote>
-<pre><code>docker version</code></pre><h2 id="3-镜像"><a href="#3-镜像" class="headerlink" title="3.镜像"></a>3.镜像</h2><blockquote>
-<p>docker中的镜像就像我们平时下载软件的安装包一样，或者说是exe可执行文件，<br>我们可以通过查找镜像，来进行下载</p>
+<h3 id="Django环境安装"><a href="#Django环境安装" class="headerlink" title="Django环境安装"></a>Django环境安装</h3><blockquote>
+<p>运行命令: <code>pip install django</code></p>
 </blockquote>
-<h3 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h3><pre><code>docker search 镜像名称
-如：
-docker search java</code></pre><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><pre><code>docker pull 镜像名称
-如：
-docker pull java</code></pre><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><pre><code>docker image ls 或者 docker images</code></pre><h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><pre><code>docker image rm fce289e99eb9
-强制删除
-docker rmi -f fce289e99eb9</code></pre><h2 id="4-容器"><a href="#4-容器" class="headerlink" title="4.容器"></a>4.容器</h2><blockquote>
-<p>我们下载可执行文件之后，要通过命令去启动他，才可以使用这个软件，<br>我们容器就相当于启动后的软件，我们才能再这个软件上进行操作</p>
+<h2 id="Djangon-操作"><a href="#Djangon-操作" class="headerlink" title="Djangon 操作"></a>Djangon 操作</h2><h3 id="Djangon命令"><a href="#Djangon命令" class="headerlink" title="Djangon命令"></a>Djangon命令</h3><pre><code>startproject #创建一个Django项目
+startapp #创建一个Django应用
+check #校验项目完整性
+runserver #本地简易运行Django项目
+shell #进入Django项目的python shell
+test #执行Django用例测试
+makemigrations #创建模型变更的迁移文件
+migrate #执行上一个命令创建的迁移文件
+dumpdata #把数据库数据导出到文件
+loaddata #把文件数据导入数据库</code></pre><blockquote>
+<p>创建一个项目<br><code>django-admin startproject django_introduction</code>  </p>
 </blockquote>
-<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><pre><code>docker run -d -p 8080:80 hub.c.163.com/library/nginx </code></pre><p>参数：  </p>
-<pre><code>-d 后台运行
--p 端口映射，把docker的80端口映射到主机的8080端口上
--v 目录映射 -v /usr/nginx/:/etc/home 把docker的/etc/home映射到/usr/nginx目录</code></pre><h3 id="查看容器状态"><a href="#查看容器状态" class="headerlink" title="查看容器状态"></a>查看容器状态</h3><pre><code>docker ps -a</code></pre><h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><pre><code>docker exec -it 69d1 bash
-或者
-docker attach 69d1</code></pre><h3 id="暂停容器"><a href="#暂停容器" class="headerlink" title="暂停容器"></a>暂停容器</h3><pre><code>docker pause myjava</code></pre><h3 id="恢复容器运行"><a href="#恢复容器运行" class="headerlink" title="恢复容器运行"></a>恢复容器运行</h3><pre><code>docker unpause myjava</code></pre><h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><pre><code>docker stop myjava</code></pre><h3 id="恢复容器运行-1"><a href="#恢复容器运行-1" class="headerlink" title="恢复容器运行"></a>恢复容器运行</h3><pre><code>docker start -i myjava</code></pre><p>注意：删除容器之前需要先停止容器的运行</p>
-<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><blockquote>
-<p>用命令<code>exit</code>进行容器退出<br>用<code>exec</code>命令进入的退出后容器还在后台运行<br>用<code>attach</code>命令进入的退出后，容器就停止运行了</p>
+<blockquote>
+<p>创建一个Django App应用<br><code>python manage.py stratapp blog</code> //创建Django App应用  </p>
 </blockquote>
-<h3 id="容器导出"><a href="#容器导出" class="headerlink" title="容器导出"></a>容器导出</h3><blockquote>
-<p>使用命令<code>docker save 镜像名称 &gt; 文件保存的位置</code> 进行容器的导出，例如</p>
-<pre><code>docker save java &gt; /home/java.tar.gz</code></pre></blockquote>
-<h3 id="容器导入"><a href="#容器导入" class="headerlink" title="容器导入"></a>容器导入</h3><blockquote>
-<p>使用命令<code>docker load &lt; 文件</code> 进行容器的导出，例如</p>
-<pre><code>docker load &lt; /home/java.tar.gz</code></pre></blockquote>
-
+<h3 id="Django应用目录介绍"><a href="#Django应用目录介绍" class="headerlink" title="Django应用目录介绍"></a>Django应用目录介绍</h3><pre><code>views.py: 视图处理的地方
+models.py: 定义应用模型的地方
+admin.py: 定义Admin模块管理对象的地方
+apps.py:声明应用的地方
+tests.py:编写应用测试的地方
+urls.py:(自行创建)管理应用路由的地方</code></pre><blockquote>
+<p>生成模型的迁移文件<br><code>python manage.py makemigrations</code>  </p>
+</blockquote>
+<blockquote>
+<p>同步迁移文件到数据库<br><code>python manage.py migrate</code>  </p>
+</blockquote>
+<blockquote>
+<p>进入Django Shell命令<br><code>python manage.py shell</code></p>
+</blockquote>
+<h3 id="Django-Admin模块使用"><a href="#Django-Admin模块使用" class="headerlink" title="Django Admin模块使用"></a>Django Admin模块使用</h3><blockquote>
+<p>创建管理员用户<br><code>python manage.py createsuperuser</code></p>
+</blockquote>
+<blockquote>
+<p>登录页面进行操作<br><code>python manage.py runserver</code>  </p>
+</blockquote>
+<h3 id="Django模板"><a href="#Django模板" class="headerlink" title="Django模板"></a>Django模板</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>变量 {{ title }}  
+for循环 {% for x in list%} {% endfor %}  
+if else判断 {% if %} {% else %} {% endif %}  </code></pre>
             </div>
             <hr/>
 
@@ -619,11 +644,11 @@ docker attach 69d1</code></pre><h3 id="暂停容器"><a href="#暂停容器" cla
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Docker入门》
+                    《Python 使用Django 搭建web应用》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/05/docker/docker-deploy/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/05/python/python-django/" property="cc:attributionName"
                rel="cc:attributionURL">
-                smwsk
+                Smwsk
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -661,50 +686,64 @@ docker attach 69d1</code></pre><h3 id="暂停容器"><a href="#暂停容器" cla
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/06/docker/docker-mysql/">
+                <a href="/2019/09/05/python/python-django/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="Docker安装Mysql">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Python 使用Django 搭建web应用">
                         
-                        <span class="card-title">Docker安装Mysql</span>
+                        <span class="card-title">Python 使用Django 搭建web应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            查找镜像docker search mysql下载镜像docker pull mysql查看安装的镜像docker images创建容器docker run --name some-mysql -p 3307:3306 -e MYSQL_R
+                            环境安装Python 环境安装
+下载python安装包进行安装，或者使用Anaconda进行安装，我本机是使用Anaconda的安装方式，正常下载安装包之后，只要选择默认选项即可
+
+Django环境安装
+运行命令: pip install 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category" target="_blank">
-                                    Docker
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            <a href="/categories/Python/Django/" class="post-category" target="_blank">
+                                    Django
+                                </a>
+                            
+                            <a href="/categories/Python/Django/Web/" class="post-category" target="_blank">
+                                    Web
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/" target="_blank">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/Mysql/" target="_blank">
-                        <span class="chip bg-color">Mysql</span>
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
                     </a>
                     
                 </div>
@@ -718,34 +757,38 @@ docker attach 69d1</code></pre><h3 id="暂停容器"><a href="#暂停容器" cla
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/02/ctf/sqlmap/sqlmap-zero/">
+                <a href="/2019/09/04/python/gecco/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="sqlmap 常用命令">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="Python 使用Scrapy爬虫框架">
                         
-                        <span class="card-title">sqlmap 常用命令</span>
+                        <span class="card-title">Python 使用Scrapy爬虫框架</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            输出等级 V
-V这个命令分为7个等级，不同的等级在控制台输出的内容不一样
-    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；
-    1：同时显示普通信息 [INF
+                            安装环境安装Scrapy
+scrapy 是一套基于Twisted的异步开发框架，是纯python 实现的爬虫框架。
+
+使用conda安装Scrapy 运行:conda install -c conda-forge scrapy或者熟悉了py
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            <a href="/categories/Python/Scrapy/" class="post-category" target="_blank">
+                                    Scrapy
                                 </a>
                             
                             
@@ -755,8 +798,16 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqlmap/" target="_blank">
-                        <span class="chip bg-color">sqlmap</span>
+                    <a href="/tags/爬虫/" target="_blank">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/Scrapy/" target="_blank">
+                        <span class="chip bg-color">Scrapy</span>
                     </a>
                     
                 </div>

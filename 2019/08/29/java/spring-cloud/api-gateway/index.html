@@ -5,7 +5,12 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="SpringCloud zuul网关, smwsk blog">
-    <meta name="description" content="SpringCloud zuul网关 | Smwsk&#39;s Blog">
+    <meta name="description" content="配置添加依赖
+在项目根目录下的pom.xml文件中添加依赖  
+
+&amp;lt;!--eureka客户端--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -390,6 +395,19 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringCloud/" class="post-category" target="_blank">
+                                SpringCloud
+                            </a>
+                        
+                            <a href="/categories/SpringCloud/JAVA/" class="post-category" target="_blank">
+                                JAVA
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -403,14 +421,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        0
+                        756
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -426,7 +444,103 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><blockquote>
+<p>在项目根目录下的pom.xml文件中添加依赖  </p>
+</blockquote>
+<pre><code>&lt;!--eureka客户端--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;!--网关--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-zuul&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre><h3 id="启动注解"><a href="#启动注解" class="headerlink" title="启动注解"></a>启动注解</h3><p>在启动类上添加注解 <code>@EnableZuulProxy</code>  </p>
+<pre><code>@SpringBootApplication
+@EnableDiscoveryClient
+@EnableZuulProxy
+public class ApiGatewayApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ApiGatewayApplication.class, args);
+    }
+
+}</code></pre><h3 id="配置网关信息"><a href="#配置网关信息" class="headerlink" title="配置网关信息"></a>配置网关信息</h3><p>在resource 目录下的bootstrap.yml文件中配置网关信息</p>
+<pre><code>eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: api-gateway</code></pre><h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><h3 id="路由转发"><a href="#路由转发" class="headerlink" title="路由转发"></a>路由转发</h3><p>在bootstrap.yml里面进行配置路由转发的规则</p>
+<pre><code>zuul:
+  routes:
+#  简介写法
+    product: /myProduct/**
+# 禁止访问的地址
+  ignored-patterns:
+    - /**/product/listForOrder</code></pre><h3 id="路由自定义"><a href="#路由自定义" class="headerlink" title="路由自定义"></a>路由自定义</h3><blockquote>
+<p>在bootstrap.yml里面进行配置哪个服务的id,对应哪个地址</p>
+<pre><code>zuul:
+  routes:</code></pre></blockquote>
+<h1 id="简介写法"><a href="#简介写法" class="headerlink" title="简介写法"></a>简介写法</h1><pre><code>path: /myProduct/**
+serviceId: product</code></pre><pre><code>### Cookie
+从源码中我们可以知道我们默认是过来了请求头的`&quot;Cookie&quot;, &quot;Set-Cookie&quot;, &quot;Authorization&quot;`属性
+</code></pre><p>private Set<string> sensitiveHeaders = new LinkedHashSet&lt;&gt;(<br>    Arrays.asList(“Cookie”, “Set-Cookie”, “Authorization”`));</string></p>
+<pre><code>
+如果我们要请求携带Cookie的话，只需要讲sensitiveHeaders设置为空就可以。
+</code></pre><p>zuul:<br>  routes:</p>
+<h1 id="简介写法-1"><a href="#简介写法-1" class="headerlink" title="简介写法"></a>简介写法</h1><pre><code>product: /myProduct/**
+sensitiveHeaders:</code></pre><pre><code>### 动态路由
+通过统一配置中心动态获取参数信息，从而动态配置路由信息达到动态路由的效果</code></pre><p>@Component<br>public class ZuulConfig {</p>
+<pre><code>@ConfigurationProperties(&quot;zull&quot;)
+@RefreshScope
+public ZuulProperties zuulProperties(){
+    return new ZuulProperties();
+}</code></pre><p>}</p>
+<pre><code>
+## 高可用
+将多个Zuul节点注册到Eureka Server上即可实现Zuul的高可用
+
+## 过滤
+### Pre和Post过滤器
+前置过滤器的作用</code></pre><p>限流<br>鉴权<br>参数校验<br>请求转发</p>
+<pre><code>
+后置过滤器的作用</code></pre><p>数据的统计<br>日志的记录</p>
+<pre><code>
+
+## 限流
+&gt;如果一个项目中有既有限流，又有鉴权的话，限流的优先级应该优先于鉴权的优先级  
+&gt;新增一个限流过滤类实现网关过滤器</code></pre><p>/**</p>
+<ul>
+<li><p>令牌桶限流</p>
+</li>
+<li><p>/<br>@Component<br>public class RateLimitFilter extends ZuulFilter {<br>  /<strong>每秒100个令牌</strong>/<br>  private static final RateLimiter RATE_LIMITER = RateLimiter.create(100);<br>  @Override<br>  public String filterType() {</p>
+<pre><code>  return PRE_TYPE;</code></pre><p>  }<br>  @Override<br>  public int filterOrder() {</p>
+<pre><code>  return SERVLET_DETECTION_FILTER_ORDER - 1;</code></pre><p>  }<br>  @Override<br>  public boolean shouldFilter() {</p>
+<pre><code>  return true;</code></pre><p>  }<br>  @Override<br>  public Object run() throws ZuulException {</p>
+<pre><code>  if(!RATE_LIMITER.tryAcquire()){
+      throw new RateLimitException();
+  }
+  return null;</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<pre><code>## 鉴权
+&gt;新建一个TokenFilter过滤类继承ZuulFilter类。</code></pre><p>@Component<br>public class TokenFilter extends ZuulFilter {<br>    @Override<br>    public String filterType() {<br>        return PRE_TYPE;<br>    }<br>    /**<br>     * 过滤值越小,执行优先级越高<br>     * @return<br>     */<br>    @Override<br>    public int filterOrder() {<br>        //减一，自定义的过滤器就会在PRE_DECORATION_FILTER_ORDER过滤器之前执行<br>        return PRE_DECORATION_FILTER_ORDER -1;<br>    }<br>    @Override<br>    public boolean shouldFilter() {<br>        return true;<br>    }<br>    @Override<br>    public Object run() throws ZuulException {<br>        RequestContext currentContext = RequestContext.getCurrentContext();<br>        HttpServletRequest request = currentContext.getRequest();</p>
+<pre><code>    // 从url参数里获取，也可以从cookie，header里获取
+    String token = request.getParameter(&quot;token&quot;);
+    if(StringUtils.isEmpty(token)){
+        //token为空，限权校验不通过
+        currentContext.setSendZuulResponse(false);
+        currentContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+    }
+    return null;
+}</code></pre><p>}</p>
+<pre><code>## 跨域
+在项目config配置文件包中,新增CorsConfig配置类  </code></pre><p>@Configuration<br>public class CorsConfig{<br>    @Bean<br>    public CorsFilter corsFilter(){<br>        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();<br>        CorsConfiguration configuration = new CorsConfiguration();<br>        configuration.setAllowCredentials(true);/<em>设置是否支持cookie跨域</em>/<br>        configuration.setAllowedOrigins(Arrays.asList(“*”));/<em>设置原始域 <a href="http://www.a.com" target="_blank" rel="noopener">http://www.a.com</a></em>/<br>        configuration.setAllowedHeaders(Arrays.asList(“*”));<br>        configuration.setAllowedMethods(Arrays.asList(“*”));<br>        configuration.setMaxAge(300l);//设置缓存时间<br>        source.registerCorsConfiguration(“/**”,configuration);<br>        return new CorsFilter();<br>    }<br>}</p>
+<pre><code></code></pre>
             </div>
             <hr/>
 
@@ -859,7 +973,7 @@ scrapy 是一套基于Twisted的异步开发框架，是纯python 实现的爬�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">5.5k</span>
+                <span class="white-color">6.6k</span>
             
 
             
