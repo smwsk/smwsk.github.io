@@ -4,11 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="sqlmap 常用命令, smwsk blog">
-    <meta name="description" content="输出等级 V
-V这个命令分为7个等级，不同的等级在控制台输出的内容不一样
-    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；
-    1：同时显示普通信息 [INF">
+    <meta name="keywords" content="Netty 入门, smwsk blog">
+    <meta name="description" content="
+Netty是一个高效的非阻塞(NIO)的网络应用程序框架。用于快速开发高性能协议服务器和客户端。  
+
+
+
+Netty 主要是基于Reactor模式的。Reactor 直译为反应器、反应堆。这个翻译容易误导人。其实将 Reactor 意译">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>sqlmap 常用命令 | Smwsk&#39;s Blog</title>
+    <title>Netty 入门 | Smwsk&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -259,13 +261,13 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
 	<div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        sqlmap 常用命令
+                        Netty 入门
                     </div>
                 </div>
             </div>
@@ -376,8 +378,12 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sqlmap/" target="_blank">
-                                <span class="chip bg-color">sqlmap</span>
+                            <a href="/tags/JAVA/" target="_blank">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                            <a href="/tags/Netty/" target="_blank">
+                                <span class="chip bg-color">Netty</span>
                             </a>
                         
                     </div>
@@ -388,8 +394,12 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                CTF
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/Netty/" class="post-category" target="_blank">
+                                Netty
                             </a>
                         
                     </div>
@@ -400,21 +410,21 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-02
+                    2019-09-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        161
+                        1.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -430,17 +440,271 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="输出等级-V"><a href="#输出等级-V" class="headerlink" title="输出等级 V"></a>输出等级 V</h2><blockquote>
-<p>V这个命令分为7个等级，不同的等级在控制台输出的内容不一样</p>
-<pre><code>    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；
-    1：同时显示普通信息 [INFO] 和警告信息 [WARNING]；
-    2：同时显示调试信息 [DEBUG]；
-    3：同时显示注入使用的攻击荷载；
-    4：同时显示 HTTP 请求；
-    5：同时显示 HTTP 响应头；
-    6：同时显示 HTTP 响应体。</code></pre><p>初学者建议指定等级为3,这样会显示payload,便于学习</p>
+                <blockquote>
+<p>Netty是一个高效的非阻塞(NIO)的网络应用程序框架。用于快速开发高性能协议服务器和客户端。  </p>
 </blockquote>
-<h2 id="指定目标-U"><a href="#指定目标-U" class="headerlink" title="指定目标 U"></a>指定目标 U</h2><h2 id="列库-dbs"><a href="#列库-dbs" class="headerlink" title="列库 dbs"></a>列库 dbs</h2><h2 id="列表-tables"><a href="#列表-tables" class="headerlink" title="列表 tables"></a>列表 tables</h2><h2 id="列表中的字段-columns"><a href="#列表中的字段-columns" class="headerlink" title="列表中的字段 columns"></a>列表中的字段 columns</h2><h2 id="线程数-–threads"><a href="#线程数-–threads" class="headerlink" title="线程数 –threads"></a>线程数 –threads</h2>
+<p><img src="/medias/loading.svg" data-original="/netty/net_request_process.png" alt="网络请求过程"></p>
+<blockquote>
+<p>Netty 主要是基于Reactor模式的。Reactor 直译为反应器、反应堆。这个翻译容易误导人。其实将 Reactor 意译为分发器更为恰当。<br>Reactor 模式本质上是一个事件机制，通过一个或一组线程检查事件，<br>发现事件之后交由另一组事件处理线程执行该事件所对应的事件处理器（回调），从而实现高响应的程序。</p>
+</blockquote>
+<blockquote>
+<p>Reactor 模型中有 2 个关键组成：<br>1）Reactor：Reactor 在一个单独的线程中运行，负责监听和分发事件，分发给适当的处理程序来对 IO 事件做出反应。它就像公司的电话接线员，它接听来自客户的电话并将线路转移到适当的联系人；<br>2）Handlers：处理程序执行 I/O 事件要完成的实际事件，类似于客户想要与之交谈的公司中的实际官员。Reactor 通过调度适当的处理程序来响应 I/O 事件，处理程序执行非阻塞操作。</p>
+</blockquote>
+<p><img src="/medias/loading.svg" data-original="/netty/nettty_reactor.jpg" alt="Handler过程"></p>
+<h3 id="Netty-服务端实现"><a href="#Netty-服务端实现" class="headerlink" title="Netty 服务端实现"></a>Netty 服务端实现</h3><blockquote>
+<p>创建服务器与客户端建立连接  </p>
+</blockquote>
+<pre><code>public class EchoServer {
+    private int port;
+    public EchoServer(int port) {
+        this.port = port;
+    }
+    public void run() throws Exception {
+        //创建EventLoopGroup 处理时间
+        EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        try {
+            ServerBootstrap b = new ServerBootstrap(); // (2)
+            b.group(bossGroup, workerGroup)
+                    //指定所使用的NIO传输 Channel
+                    .channel(NioServerSocketChannel.class) // (3)
+                    .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() { // (4)
+                        @Override
+                        public void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast(new EchoServerHandler());
+                        }
+                    })
+                    .option(ChannelOption.SO_BACKLOG, 128)          // (5)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
+
+            // Bind and start to accept incoming connections.
+            ChannelFuture f = b.bind(port).sync(); // (7)
+
+            // Wait until the server socket is closed.
+            f.channel().closeFuture().sync();
+        } finally {
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        int port = 8080;
+        if (args.length &gt; 0) {
+            port = Integer.parseInt(args[0]);
+        }
+
+        new EchoServer(port).run();
+    }
+}</code></pre><blockquote>
+<p>创建EchoServerHandler处理客户端请求过来的数据  </p>
+</blockquote>
+<pre><code>public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        ByteBuf byteBuffer = (ByteBuf) msg;
+        System.out.println(&quot;server receive:&quot; + byteBuffer.toString(CharsetUtil.UTF_8));
+        //将接受到消息回写给发送者
+        ctx.write(byteBuffer);
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        //将未消息冲刷到远程节点，并且关闭该 Channel
+        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)
+                .addListener(ChannelFutureListener.CLOSE);
+    }
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        //打印异常栈跟踪
+        cause.printStackTrace();
+        //关闭该Channel
+        ctx.close();
+    }
+}
+</code></pre><h3 id="Netty-客户端实现"><a href="#Netty-客户端实现" class="headerlink" title="Netty 客户端实现"></a>Netty 客户端实现</h3><blockquote>
+<p>创建EchoClient客户端与服务器建立通讯  </p>
+</blockquote>
+<pre><code>public class EchoClient {
+    private final String host;
+    private final int port;
+
+
+    public EchoClient(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+
+    public void start() throws InterruptedException {
+        EventLoopGroup group = new NioEventLoopGroup();
+        try {
+            Bootstrap b = new Bootstrap();
+            b.group(group)
+                    .channel(NioSocketChannel.class)
+                    .remoteAddress(new InetSocketAddress(host, port))
+                    .handler(new ChannelInitializer&lt;SocketChannel&gt;() {
+                        @Override
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            socketChannel.pipeline().addLast(new EchoClientHandler());
+                        }
+                    });
+            ChannelFuture channelFuture = b.connect().sync();
+            channelFuture.channel().closeFuture().sync();
+        } finally {
+            group.shutdownGracefully().sync();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        new EchoClient(&quot;127.0.0.1&quot;, 8080).start();
+    }
+}</code></pre><blockquote>
+<p>创建EchoClientHandler处理器，处理客户端与服务端之间的通讯  </p>
+</blockquote>
+<pre><code>@ChannelHandler.Sharable
+public class EchoClientHandler extends SimpleChannelInboundHandler&lt;ByteBuf&gt; {
+
+    /**
+     * 渠道读取服务器传递过来的消息
+     * @param channelHandlerContext
+     * @param byteBuf
+     * @throws Exception
+     */
+    @Override
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
+        System.out.println(&quot;Client received: &quot;+ byteBuf.toString(CharsetUtil.UTF_8));
+    }
+
+    /**
+     * 服务器建立后调用
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush(Unpooled.copiedBuffer(&quot;Netty rocks&quot;,CharsetUtil.UTF_8));
+    }
+
+    /**
+     * 传递异常时候调用
+     * @param ctx
+     * @param cause
+     * @throws Exception
+     */
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
+    }
+
+}
+</code></pre><blockquote>
+<p>我们可以从ChannelInboundHandlerAdapter的源码看到ChannelInboundHandler的行为周期  </p>
+</blockquote>
+<pre><code>    /**
+     *通道注册的时候调用
+     */
+    @Skip
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        ctx.fireChannelRegistered();
+    }
+
+    /**
+     *通道未注册的时候调用
+     */
+    @Skip
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        ctx.fireChannelUnregistered();
+    }
+
+    /**
+     * channel被启用的时候触发（在建立连接的时候）
+     * 客户端连接到服务端后进行
+     */
+    @Skip
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.fireChannelActive();
+    }
+
+    /**
+     * channel被禁用的时候触发（在断开连接的时候）
+     * 客户端与服务端断开连接后进行
+     */
+    @Skip
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        ctx.fireChannelInactive();
+    }
+
+    /**
+     * 读取客户端发送的数据
+     */
+    @Skip
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        ctx.fireChannelRead(msg);
+    }
+
+    /**
+     * 数据读取完成的时候触发
+     */
+    @Skip
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        ctx.fireChannelReadComplete();
+    }
+
+    /**
+     * 用户时间触发的时候调用
+     */
+    @Skip
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        ctx.fireUserEventTriggered(evt);
+    }
+
+    /**
+     * 信道可写性已更改的时候调用
+     */
+    @Skip
+    @Override
+    public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
+        ctx.fireChannelWritabilityChanged();
+    }
+
+    /**
+     * exceptionCaught() 事件处理方法是当出现 Throwable 对象才会被调用，
+     * 即当 Netty 由于 IO 错误或者处理器在处理事件时抛出的异常时。
+     * 在大部分情况下，捕获的异常应该被记录下来并且把关联的 channel 给关闭掉。
+     * 然而这个方法的处理方式会在遇到不同异常的情况下有不同的实现，
+     * 比如你可能想在关闭连接之前发送一个错误码的响应消息。
+     */
+    @Skip
+    @Override
+    @SuppressWarnings(&quot;deprecation&quot;)
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
+            throws Exception {
+        ctx.fireExceptionCaught(cause);
+    }
+
+    /**
+     * 每当从服务端收到新的客户端连接时调用
+     */
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        // NOOP
+    }
+
+    /**
+     * 每当从服务端收到新的客户端断开时调用
+     */
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        // NOOP
+    }</code></pre>
             </div>
             <hr/>
 
@@ -598,9 +862,9 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《sqlmap 常用命令》
+                    《Netty 入门》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/02/ctf/sqlmap/sqlmap-zero/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/netty/get-start/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Smwsk
             </a> 采用
@@ -644,35 +908,42 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/05/docker/docker-deploy/">
+                <a href="/2019/09/23/netty/netty-object/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Docker入门">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="Netty传输对象消息">
                         
-                        <span class="card-title">Docker入门</span>
+                        <span class="card-title">Netty传输对象消息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.安装Docker curl -sSL https://get.docker.com/ | sh 2.启动Dockerservice docker start 
-查看docker版本信息 
+                            概要
+netty进行对象传输首先对象需要序列化，然后通过ByteBuf的形式进行传输
 
-docker version3.镜像
-dock
+Netty服务端实现
+创建StudentServer与客户端建立通道进行通信  
+
+public class StudentServer {
+    p
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-05
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category" target="_blank">
-                                    Docker
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/Netty/" class="post-category" target="_blank">
+                                    Netty
                                 </a>
                             
                             
@@ -682,8 +953,12 @@ dock
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/" target="_blank">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/JAVA/" target="_blank">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                    <a href="/tags/Netty/" target="_blank">
+                        <span class="chip bg-color">Netty</span>
                     </a>
                     
                 </div>
@@ -697,36 +972,43 @@ dock
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/29/ctf/xss/xss-one/">
+                <a href="/2019/09/05/python/python-django/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="CTF第二题-Xss漏洞">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Python 使用Django 搭建web应用">
                         
-                        <span class="card-title">CTF第二题-Xss漏洞</span>
+                        <span class="card-title">Python 使用Django 搭建web应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            xss的类型  xss漏洞的类型分为3种:
-反射型XSS
-恶意代码并没有保存在目标网站，通过引诱用户点击一个链接到目标网站的恶意链接来实施攻击的。
+                            环境安装Python 环境安装
+下载python安装包进行安装，或者使用Anaconda进行安装，我本机是使用Anaconda的安装方式，正常下载安装包之后，只要选择默认选项即可
 
-存储型XSS
-把恶意的JavaScript,Html代码存储在目标网站的数据库上，正常都是
+Django环境安装
+运行命令: pip install 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            <a href="/categories/Python/Django/" class="post-category" target="_blank">
+                                    Django
+                                </a>
+                            
+                            <a href="/categories/Python/Django/Web/" class="post-category" target="_blank">
+                                    Web
                                 </a>
                             
                             
@@ -736,12 +1018,12 @@ dock
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CTF/" target="_blank">
-                        <span class="chip bg-color">CTF</span>
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/XSS漏洞/" target="_blank">
-                        <span class="chip bg-color">XSS漏洞</span>
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
                     </a>
                     
                 </div>

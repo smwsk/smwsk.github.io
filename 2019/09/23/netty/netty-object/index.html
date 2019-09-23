@@ -4,11 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="sqlmap 常用命令, smwsk blog">
-    <meta name="description" content="输出等级 V
-V这个命令分为7个等级，不同的等级在控制台输出的内容不一样
-    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；
-    1：同时显示普通信息 [INF">
+    <meta name="keywords" content="Netty传输对象消息, smwsk blog">
+    <meta name="description" content="概要
+netty进行对象传输首先对象需要序列化，然后通过ByteBuf的形式进行传输
+
+Netty服务端实现
+创建StudentServer与客户端建立通道进行通信  
+
+public class StudentServer {
+    p">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +20,7 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>sqlmap 常用命令 | Smwsk&#39;s Blog</title>
+    <title>Netty传输对象消息 | Smwsk&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -259,13 +263,13 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
 	<div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        sqlmap 常用命令
+                        Netty传输对象消息
                     </div>
                 </div>
             </div>
@@ -376,8 +380,12 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sqlmap/" target="_blank">
-                                <span class="chip bg-color">sqlmap</span>
+                            <a href="/tags/JAVA/" target="_blank">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                            <a href="/tags/Netty/" target="_blank">
+                                <span class="chip bg-color">Netty</span>
                             </a>
                         
                     </div>
@@ -388,8 +396,12 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                CTF
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/Netty/" class="post-category" target="_blank">
+                                Netty
                             </a>
                         
                     </div>
@@ -400,21 +412,21 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-02
+                    2019-09-23
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        161
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -430,17 +442,187 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="输出等级-V"><a href="#输出等级-V" class="headerlink" title="输出等级 V"></a>输出等级 V</h2><blockquote>
-<p>V这个命令分为7个等级，不同的等级在控制台输出的内容不一样</p>
-<pre><code>    0：只显示 Python 的 tracebacks 信息、错误信息 [ERROR] 和关键信息 [CRITICAL]；
-    1：同时显示普通信息 [INFO] 和警告信息 [WARNING]；
-    2：同时显示调试信息 [DEBUG]；
-    3：同时显示注入使用的攻击荷载；
-    4：同时显示 HTTP 请求；
-    5：同时显示 HTTP 响应头；
-    6：同时显示 HTTP 响应体。</code></pre><p>初学者建议指定等级为3,这样会显示payload,便于学习</p>
+                <h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><blockquote>
+<p>netty进行对象传输首先对象需要序列化，然后通过ByteBuf的形式进行传输</p>
 </blockquote>
-<h2 id="指定目标-U"><a href="#指定目标-U" class="headerlink" title="指定目标 U"></a>指定目标 U</h2><h2 id="列库-dbs"><a href="#列库-dbs" class="headerlink" title="列库 dbs"></a>列库 dbs</h2><h2 id="列表-tables"><a href="#列表-tables" class="headerlink" title="列表 tables"></a>列表 tables</h2><h2 id="列表中的字段-columns"><a href="#列表中的字段-columns" class="headerlink" title="列表中的字段 columns"></a>列表中的字段 columns</h2><h2 id="线程数-–threads"><a href="#线程数-–threads" class="headerlink" title="线程数 –threads"></a>线程数 –threads</h2>
+<h3 id="Netty服务端实现"><a href="#Netty服务端实现" class="headerlink" title="Netty服务端实现"></a>Netty服务端实现</h3><blockquote>
+<p>创建StudentServer与客户端建立通道进行通信  </p>
+</blockquote>
+<pre><code>public class StudentServer {
+    public void run(Integer port){
+        //创建EventLoopGroup 处理时间
+        EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        try {
+            ServerBootstrap b = new ServerBootstrap(); // (2)
+            b.group(bossGroup, workerGroup)
+                    //指定所使用的NIO传输 Channel
+                    .channel(NioServerSocketChannel.class) // (3)
+                    .childHandler(new StudentServerChannelInitializer())
+                    .option(ChannelOption.SO_BACKLOG, 1024)          // (5)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
+            //绑定端口，同步等待绑定成功
+            ChannelFuture f = b.bind(port).sync(); // (7)
+            //等到服务器监听端口关闭
+            f.channel().closeFuture().sync();
+        } catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
+        }
+    }
+    public static void main(String[] args) throws Exception {
+        new StudentServer().run(8000);
+    }
+}
+</code></pre><blockquote>
+<p>创建StudentServerChannelInitializer服务端的通道初始化，绑定处理的Handler  </p>
+</blockquote>
+<pre><code>public class StudentServerChannelInitializer extends ChannelInitializer&lt;SocketChannel&gt; {
+    @Override
+    protected void initChannel(SocketChannel ch) throws Exception {
+        //添加对象解析器，负责对象序列号POJO对象进行解码，设置对象序列号最大长度为1M 防止内存溢出
+        //设置WeakReferenceMap对类加载器进行缓存，支持多线程并发访问，防止内存溢出
+        ch.pipeline().addLast(new ObjectDecoder(1024 * 1024,
+                ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
+        //添加对象编码器，在服务器对外发信息的时候实现自动序列号
+        ch.pipeline().addLast(new ObjectEncoder());
+        //处理网络IO
+        ch.pipeline().addLast(new StudentServerHandler());
+    }
+}</code></pre><blockquote>
+<p>创建StudentServerHandler处理Channel的生命周期，接收客户端发送的消息数据，这里使用的是ChannelInboundHandlerAdapter绑定的对象是Object,服务端读取数据的时候需要进行强转</p>
+</blockquote>
+<pre><code>public class StudentServerHandler extends ChannelInboundHandlerAdapter {
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        //接收客户端发过来的消息
+        StudentInput studentInput = (StudentInput) msg;
+        System.out.println(&quot;接收客户端发过来的消息:&quot; + studentInput.toString());
+        //返回给客户端消息
+        StudentOutput studentOutput = new StudentOutput();
+        studentOutput.setName(&quot;李四&quot;);
+        studentOutput.setAge(20);
+        studentOutput.setSex(&quot;男&quot;);
+        ctx.writeAndFlush(studentOutput);
+    }
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
+    }
+}</code></pre><blockquote>
+<p>StudentServerSimpleHandler 继承的SimpleChannelInboundHandlerd对象是可以直接接收的对象，在客户端发送数据的时候就进行序列化数据和反序列数据，在接收端就可以指定接收数据的类型。  </p>
+</blockquote>
+<pre><code>public class StudentServerSimpleHandler extends SimpleChannelInboundHandler&lt;StudentInput&gt; {
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, StudentInput msg) throws Exception {
+        //接收客户端发过来的消息
+        System.out.println(&quot;接收客户端发过来的消息:&quot; + msg.toString());
+        //返回给客户端消息
+        StudentOutput studentOutput = new StudentOutput();
+        studentOutput.setName(&quot;李四&quot;);
+        studentOutput.setAge(20);
+        studentOutput.setSex(&quot;男&quot;);
+        ctx.writeAndFlush(studentOutput);
+    }
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
+    }
+}
+</code></pre><h3 id="Netty客户端实现"><a href="#Netty客户端实现" class="headerlink" title="Netty客户端实现"></a>Netty客户端实现</h3><blockquote>
+<p>创建StudentClient与服务端建立连接，并指定使用StudentClientChannelInitializer通道初始化。</p>
+</blockquote>
+<pre><code>public class StudentClient {
+    public void connect(String host, int port){
+        //配置辅助启动类
+        EventLoopGroup group = new NioEventLoopGroup();
+        try {
+            // 客户端辅助启动类 对客户端配置
+            Bootstrap bootstrap = new Bootstrap();
+            bootstrap.group(group)
+            .channel(NioSocketChannel.class)
+            .handler(new StudentClientChannelInitializer())
+            .option(ChannelOption.TCP_NODELAY,true);
+            //异步连接服务器
+            ChannelFuture channelFuture =bootstrap.connect(host, port).sync();
+
+            //异步等待连接关闭
+            channelFuture.channel().closeFuture().sync();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            group.shutdownGracefully();
+        }
+    }
+    public static void main(String[] args) {
+        new StudentClient().connect(&quot;127.0.0.1&quot;,8000);
+    }
+}
+</code></pre><blockquote>
+<p>StudentClientChannelInitializer通道初始化设置解析器进行序列号传输和处理IO的Handler来进行数据的通讯。</p>
+</blockquote>
+<pre><code>public class StudentClientChannelInitializer extends ChannelInitializer&lt;SocketChannel&gt; {
+    @Override
+    protected void initChannel(SocketChannel ch) throws Exception {
+        //添加对象解析器，负责对象序列号POJO对象进行解码，设置对象序列号最大长度为1M 防止内存溢出
+        //设置WeakReferenceMap对类加载器进行缓存，支持多线程并发访问，防止内存溢出
+        ch.pipeline().addLast(new ObjectDecoder(1024 * 1024,
+                ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
+        //添加对象编码器，在服务器对外发信息的时候实现自动序列号
+        ch.pipeline().addLast(new ObjectEncoder());
+        //处理网络IO
+        ch.pipeline().addLast(new StudentClientSimpleHandler());
+    }
+}</code></pre><blockquote>
+<p>创建StudentClientHandler处理器与服务端进行通讯，进行数据的发送和接收。</p>
+</blockquote>
+<pre><code>public class StudentClientHandler extends ChannelInboundHandlerAdapter {
+
+    //服务器和客户端连接成功
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        StudentInput studentInput = new StudentInput();
+        studentInput.setAge(10);
+        studentInput.setName(&quot;张三&quot;);
+        ctx.writeAndFlush(studentInput);
+    }
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        try {
+            StudentOutput studentOutput = (StudentOutput) msg;
+            System.out.println(studentOutput.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            ReferenceCountUtil.release(msg);
+        }
+    }
+}
+</code></pre><p>StudentClientSimpleHandler 采用继承了SimpleChannelInboundHandler的方式，可以指定传输的数据类型</p>
+<pre><code>public class StudentClientSimpleHandler extends SimpleChannelInboundHandler&lt;StudentOutput&gt; {
+
+    //服务器和客户端连接成功
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        StudentInput studentInput = new StudentInput();
+        studentInput.setAge(10);
+        studentInput.setName(&quot;张三&quot;);
+        ctx.writeAndFlush(studentInput);
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, StudentOutput msg) throws Exception {
+        StudentOutput studentOutput = (StudentOutput) msg;
+        System.out.println(&quot;客户端接收到服务器的消息：&quot; + studentOutput.toString());
+    }
+}
+</code></pre>
             </div>
             <hr/>
 
@@ -598,9 +780,9 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《sqlmap 常用命令》
+                    《Netty传输对象消息》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/02/ctf/sqlmap/sqlmap-zero/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/23/netty/netty-object/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Smwsk
             </a> 采用
@@ -640,50 +822,63 @@ V这个命令分为7个等级，不同的等级在控制台输出的内容不一
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/05/docker/docker-deploy/">
+                <a href="/2019/09/23/netty/netty-object/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Docker入门">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="Netty传输对象消息">
                         
-                        <span class="card-title">Docker入门</span>
+                        <span class="card-title">Netty传输对象消息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.安装Docker curl -sSL https://get.docker.com/ | sh 2.启动Dockerservice docker start 
-查看docker版本信息 
+                            概要
+netty进行对象传输首先对象需要序列化，然后通过ByteBuf的形式进行传输
 
-docker version3.镜像
-dock
+Netty服务端实现
+创建StudentServer与客户端建立通道进行通信  
+
+public class StudentServer {
+    p
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category" target="_blank">
-                                    Docker
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/Netty/" class="post-category" target="_blank">
+                                    Netty
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/" target="_blank">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/JAVA/" target="_blank">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                    <a href="/tags/Netty/" target="_blank">
+                        <span class="chip bg-color">Netty</span>
                     </a>
                     
                 </div>
@@ -697,36 +892,40 @@ dock
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/29/ctf/xss/xss-one/">
+                <a href="/2019/09/17/netty/get-start/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.svg" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="CTF第二题-Xss漏洞">
+                        <img src="/medias/loading.svg" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Netty 入门">
                         
-                        <span class="card-title">CTF第二题-Xss漏洞</span>
+                        <span class="card-title">Netty 入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            xss的类型  xss漏洞的类型分为3种:
-反射型XSS
-恶意代码并没有保存在目标网站，通过引诱用户点击一个链接到目标网站的恶意链接来实施攻击的。
+                            
+Netty是一个高效的非阻塞(NIO)的网络应用程序框架。用于快速开发高性能协议服务器和客户端。  
 
-存储型XSS
-把恶意的JavaScript,Html代码存储在目标网站的数据库上，正常都是
+
+
+Netty 主要是基于Reactor模式的。Reactor 直译为反应器、反应堆。这个翻译容易误导人。其实将 Reactor 意译
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/Netty/" class="post-category" target="_blank">
+                                    Netty
                                 </a>
                             
                             
@@ -736,12 +935,12 @@ dock
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CTF/" target="_blank">
-                        <span class="chip bg-color">CTF</span>
+                    <a href="/tags/JAVA/" target="_blank">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/XSS漏洞/" target="_blank">
-                        <span class="chip bg-color">XSS漏洞</span>
+                    <a href="/tags/Netty/" target="_blank">
+                        <span class="chip bg-color">Netty</span>
                     </a>
                     
                 </div>
